@@ -1,3 +1,25 @@
+# 0802 update
+
+package.json의 의존성 항목에 vuex를 추가하였습니다.
+따로 pull이나 merge등을 할 필요는 없고 현재 project에 vuex를 설치하면 됩니다.
+``` bash
+npm install -save vuex
+```
+
+아직 이 repository를 clone 하지 않았다면 clone후 다음 명령어를 실행해 주세요
+``` bash
+npm install
+```
+
+또한 vuex 사용을 위해 
+./src/store
+./stc/index.js
+가 있어야 합니다.
+
+더불어
+[fds-picky-vue-template](https://github.com/fc-pickyeater/fds-picky-vue-template)
+위 template에 vuex 설치 여부 질의 항목이 추가되었습니다.
+
 # Project Structure
 
 vue template docs에서 긁어옴... 차차 번역 하겠습니다.
