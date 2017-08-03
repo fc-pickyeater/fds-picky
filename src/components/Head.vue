@@ -1,6 +1,7 @@
 <template lang="pug">
-  .hello
+  .home
     h1 {{ msg }}
+    p {{ dscrpt }}
 </template>
 
 <script>
@@ -8,7 +9,8 @@ export default {
   name: 'hello',
   data() {
     return {
-      msg: 'template 설치 완료',
+      msg: 'head',
+      dscrpt: '햄버거 메뉴 | 로그인-아웃 링크 | 회원가입-마이페이지 링크',
     };
   },
 };

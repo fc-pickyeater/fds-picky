@@ -4,7 +4,10 @@ import Vue from 'vue';
 import App from './App';
 
 // vue-router 모듈 로드
-import router from './router';
+import router from './router/router';
+
+// vuex 모듈 로드
+import store from './store/store';
 
 // 환경설정: false로 설정할 경우, 배포에 대한 Tip을 출력하지 않습니다.
 Vue.config.productionTip = false;

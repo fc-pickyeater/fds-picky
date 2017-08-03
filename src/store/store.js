@@ -3,11 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
   // strict mode
   strict: process.env.NODE_ENV !== 'production',
 });
-
-export default {
-  store,
-};

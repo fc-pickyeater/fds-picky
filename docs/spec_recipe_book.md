@@ -20,4 +20,3 @@
 - RecipeItem는 RecipeBook의 item으로 표시되기 위한 Recipe의 축약표현이다.
 - RecipeItem은 다음 상태에 따라 외형이 변한다.
   - logined=true AND current_RecipeBook=myRecipeBook
-  
