@@ -7,7 +7,6 @@ import Recipe from '@/components/recipe/Recipe';
 import MyPage from '@/components/personal/MyPage';
 import Login from '@/components/valid/Login';
 
-
 Vue.use(Router);
 
 export default new Router({

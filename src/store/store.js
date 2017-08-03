@@ -7,3 +7,4 @@ export default new Vuex.Store({
   // strict mode
   strict: process.env.NODE_ENV !== 'production',
 });
+

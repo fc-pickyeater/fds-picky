@@ -18,6 +18,7 @@
       li if ( logined AND NOT isEditing ) then { review | 평점 }
 </template>
 
+
 <script>
 export default {
   name: 'Recipe',

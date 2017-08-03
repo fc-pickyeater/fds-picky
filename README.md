@@ -1,4 +1,54 @@
-# 0802 update
+# Picky CookBook
+
+## local repository에 이 project 구성하기
+
+1. vue project template 설치
+"제작자" 설정값을 "FDS4기7team"으로 통일 했으면 좋겠습니다.
+그 외에 아래 설정값은 전부 default 값으로 되어 있으니 엔터 연타로 충분합니다.
+
+``` bash
+$ vue init fc-pickyeater/fds-picky-vue-template picky_cookbook
+
+? project 이름 picky_cookbook
+? project 설명 Fast Campus front-end dev. school 4기 team 7의 project. 주제는 '음식2: 오늘 뭐먹지?'
+? 제작자 FDS4기7team
+? Vue 빌드 standalone
+? Pug를 사용 하시겠습니까? Yes
+? Sass를 사용 하시겠습니까? Yes
+? Vue-router를 사용 하시겠습니까? Yes
+? Vuex를 사용 하시겠습니까? Yes
+? ESLint를 사용 하시겠습니까? Yes
+? ESLint pre-set을 선택해 주세요. Airbnb
+? unit test를 위한 Karma와 Mocha를 설치 하시겠습니까? Yes
+? e2e test를 위한 Nightwatch를 설치 하시겠습니까? Yes
+
+   vue-cli · Generated "picky_cookbook".
+
+   프로젝트 시작하기:
+
+     cd picky_cookbook
+     npm install
+     npm run dev
+
+   https://vuejs-templates.github.io/webpack 에서 프로젝트 템플릿 사용 방법을 확인할 수 있습니다.
+
+```
+
+위와 같은 message가 출력되면 설치가 정상적으로 종료된 것입니다.
+이 후 생성된 picky_cookbook directory로 이동해 주세요
+
+``` bash
+$ cd picky_cookbook
+```
+
+2. picky_cookbook remote repository 연결하기
+현재 위치가 picky_cookbook directory인지 확인 후 진행해 주세요.
+아래 명령어를 차례로 입력합니다.
+``` bash
+$ git init
+
+$ git remote add upstream https://github.com/fc-pickyeater/fds-picky.git
+```
 
 package.json의 의존성 항목에 vuex를 추가하였습니다.
 따로 pull이나 merge등을 할 필요는 없고 현재 project에 vuex를 설치하면 됩니다.
@@ -107,6 +157,7 @@ The NPM package meta file that contains all the build dependencies and [build co
 - Pug를 사용 하시겠습니까? Yes
 - Sass를 사용 하시겠습니까? Yes
 - Vue-router를 사용 하시겠습니까? Yes
+- Vuex를 사용 하시겠습니까? Yes
 - ESLint를 사용 하시겠습니까? Yes
 - ESLint pre-set을 선택해 주세요. Airbnb
 - unit test를 위한 Karma와 Mocha를 설치 하시겠습니까? Yes

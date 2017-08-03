@@ -29,6 +29,7 @@
 export default {
   name: 'RecipeBook',
 };
+
 </script>
 
 <style lang="sass">

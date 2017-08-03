@@ -15,6 +15,7 @@ Vue.config.productionTip = false;
 // 아래 라인 주석을 지우지 마세요.
 /* eslint-disable no-new */
 
+
 // Vue 루트 인스턴스 생성 및 설정
 new Vue({
   el: '#app',
