@@ -41,151 +41,55 @@ $ vue init fc-pickyeater/fds-picky-vue-template picky_cookbook
 $ cd picky_cookbook
 ```
 
-2. picky_cookbook remote repository 연결하기
+2. picky_cookbook origin remote 연결하기
+
 현재 위치가 picky_cookbook directory인지 확인 후 진행해 주세요.
+
+하나의 remote repository에 하나의 master branch를 두고 여러 local repository가 각자의 dev branch를 운영하는 방식으로 프로젝트를 진행합니다.
+따라서 forked remote repository는 사용하지 않습니다.
+
 아래 명령어를 차례로 입력합니다.
 ``` bash
 $ git init
 
-$ git remote add upstream https://github.com/fc-pickyeater/fds-picky.git
+$ git add *
+
+$ git commimt -m "initial"
+
+$ git remote add origin https://github.com/fc-pickyeater/fds-picky.git
+
+$ git fetch --all
+
+$ git reset --hard origin/master
+
+HEAD is now at 8264960 initial env. ver.1
 ```
-
-package.json의 의존성 항목에 vuex를 추가하였습니다.
-따로 pull이나 merge등을 할 필요는 없고 현재 project에 vuex를 설치하면 됩니다.
-``` bash
-npm install -save vuex
-```
-
-아직 이 repository를 clone 하지 않았다면 clone후 다음 명령어를 실행해 주세요
-``` bash
-npm install
-```
-
-또한 vuex 사용을 위해 
-./src/store
-./stc/index.js
-가 있어야 합니다.
-
-더불어
-[fds-picky-vue-template](https://github.com/fc-pickyeater/fds-picky-vue-template)
-위 template에 vuex 설치 여부 질의 항목이 추가되었습니다.
-
-# Project Structure
-
-vue template docs에서 긁어옴... 차차 번역 하겠습니다.
+마지막 행과 같은 message가 뜨면 개발 환경 설정이 완료 된 것입니다.
+이후 dev branch와 그 하위 branch들을 생성하여 작업을 시작하면 됩니다.
+아래 명령어들로 의존 모듈을 설치하고 개발 모드를 시작할 수 있습니다.
 
 ``` bash
-.
-├── build/                      # webpack config files
-│   └── ...
-├── config/
-│   ├── index.js                # main project config
-│   └── ...
-├── docs/                       # spec등 문서들
-├── src/
-│   ├── main.js                 # app entry file
-│   ├── App.vue                 # main app component
-│   ├── components/             # ui components
-│   │   └── ...
-│   └── assets/                 # module assets (processed by webpack)
-│       └── ...
-├── static/                     # pure static assets (directly copied)
-├── test/
-│   └── unit/                   # unit tests
-│   │   ├── specs/              # test spec files
-│   │   ├── index.js            # test build entry file
-│   │   └── karma.conf.js       # test runner config file
-│   └── e2e/                    # e2e tests
-│   │   ├── specs/              # test spec files
-│   │   ├── custom-assertions/  # custom assertions for e2e tests
-│   │   ├── runner.js           # test runner script
-│   │   └── nightwatch.conf.js  # test runner config file
-├── .babelrc                    # babel config
-├── .postcssrc.js               # postcss config
-├── .eslintrc.js                # eslint config
-├── .editorconfig               # editor config
-├── index.html                  # index.html template
-└── package.json                # build scripts and dependencies
+$ npm install
+$ npm run dev
 ```
 
-### `build/`
 
-This directory holds the actual configurations for both the development server and the production webpack build. Normally you don't need to touch these files unless you want to customize Webpack loaders, in which case you should probably look at `build/webpack.base.conf.js`.
+## VSCode에서 ESLint - airBnb style 사용시 주의사항
 
-### `config/index.js`
-
-This is the main configuration file that exposes some of the most common configuration options for the build setup. See [API Proxying During Development](proxy.md) and [Integrating with Backend Framework](backend.md) for more details.
-
-### `docs/`
-
-spec등 문서들
-
-### `src/`
-
-This is where most of your application code will live in. How to structure everything inside this directory is largely up to you; if you are using Vuex, you can consult the [recommendations for Vuex applications](http://vuex.vuejs.org/en/structure.html).
-
-### `static/`
-
-This directory is an escape hatch for static assets that you do not want to process with Webpack. They will be directly copied into the same directory where webpack-built assets are generated.
-
-See [Handling Static Assets](static.md) for more details.
-
-### `test/unit`
-
-Contains unit test related files. See [Unit Testing](unit.md) for more details.
-
-### `test/e2e`
-
-Contains e2e test related files. See [End-to-end Testing](e2e.md) for more details.
-
-### `index.html`
-
-This is the **template** `index.html` for our single page application. During development and builds, Webpack will generate assets, and the URLs for those generated assets will be automatically injected into this template to render the final HTML.
-
-### `package.json`
-
-The NPM package meta file that contains all the build dependencies and [build commands](commands.md).
-
-## vue template 설치시 설정된 사항들
-
-[fds-picky-vue-template](https://github.com/fc-pickyeater/fds-picky-vue-template)
-
-- project 이름 picky_cookbook
-- project 설명 (Vue.js project) Fast Campus front-end dev. school 4기 team 7의 project. 주제는 '음식2: 오늘 뭐먹지?'
-- 제작자 FDS4기team7
-- Vue 빌드 standalone
-- Pug를 사용 하시겠습니까? Yes
-- Sass를 사용 하시겠습니까? Yes
-- Vue-router를 사용 하시겠습니까? Yes
-- Vuex를 사용 하시겠습니까? Yes
-- ESLint를 사용 하시겠습니까? Yes
-- ESLint pre-set을 선택해 주세요. Airbnb
-- unit test를 위한 Karma와 Mocha를 설치 하시겠습니까? Yes
-- e2e test를 위한 Nightwatch를 설치 하시겠습니까? Yes
-
-## Build Setup
-
-``` bash
-# 의존 모듈 설치
-npm install
-
-# web server (localhost:8080)로 구동
-npm run dev
-
-# 배포를 위한 압축, build
-npm run build
-
-# 배포를 위한 압축, build와 bundle analyzer report 보기
-npm run build --report
-
-# unit test 수행
-npm run unit
-
-# e2e test 수행
-npm run e2e
-
-# 모든 test 수행
-npm test
+'end of line' style이 LF가 아니면 ESLint는 오류를 발생시키고 compile이 되지 않습니다.
+그러나 VSCode의 기본 설정은 CRLF입니다.
+이를 피하기 위해 VSCode 설정파일을 엽니다.
+파일(F) -> 기본 설정(P) -> 설정  을 클릭하여 setting.jason 파일이 열리면 오른쪽 사용자 설정란의 { } 내부에 다음을 추가해 줍니다.
+이때 이미 존재하는 행과의 사이에 ,를 잊지 맙시다.
+``` json
+"files.eol": "\n"
 ```
 
-보다 자세한 사용법은 [가이드](https://vuejs-templates.github.io/webpack/), [vue-loader 문서(한국어 번역)](https://vue-loader.vuejs.org/kr/)를 읽어보세요.
+또한 이미 CRLF로 작성된 파일은 LF로 바꿔줘야 합니다.
+명령어 팔레트 ( 보기(V) -> 명령어 팔레트 )에 'Change End of Line Sequence' 명령을 수행하여 LF를 선택해 주면 현재 열린 파일의 행 끝이 LF로 변합니다.
+
+또 도저히 ESLint의 에러 이유를 찾을 수 없는 경우 오류를 발생시키는 해당 파일의 최상단에 아래 주석문을 삽입해 주면 임시로 문제를 덮어둘 수 있습니다.
+
+``` javascript
+/* eslint-disable */
+```
