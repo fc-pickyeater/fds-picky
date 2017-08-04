@@ -1,0 +1,73 @@
+// .hidden
+.hidden {
+  display: none;
+}
+// .a11y-hidden
+.a11y-hidden, legend {
+  overflow: hidden;
+  position: absolute;
+  clip:     rect(0,0,0,0);
+  width:    1px;
+  height:   1px;
+  margin:   -1px;
+  border:   0;
+  padding:  0;
+  &.focusable:focus {
+    overflow: visible;
+    position: static;
+    clip:     auto;
+    width:    auto;
+    height:   auto;
+    margin:   0;
+  }
+}
+
+// 기본 글꼴 사이즈
+$base-font-size: 10px !default;
+// 글줄 사이(행간) 비율
+$leading-scale: 1.5;
+// 글줄 사이(행간) 간격
+$leading: 1.4rem * $leading-scale;
+
+.mt-1{
+  margin-top: $leading;
+}
+.mt-2{
+  margin-top: $leading * 2;
+}
+html{
+  box-sizing: border-box;
+  font-size: $base-font-size;
+  overflow-y: scroll;
+}
+
+body{
+  background: #f6f5f5;
+  line-height: $leading-scale;
+  font-size: 1.4rem;
+  font-family: "Noto Sans KR",sans-serif;
+}
+a{
+  color: #454545;
+}
+header, main, footer{
+	@include clearfix;
+}
+.h2-title{
+  font-size: 3.6rem;
+  em{
+    color: #f44336;
+  }
+  @include breakpoint(tablet){
+		font-size: 2.4rem;
+  }
+  @include breakpoint(mobile){
+		font-size: 1.6rem;;
+	}
+
+}
+.main-bg{
+  height: 100vh;
+  background: #fff url('./assets/main/main_bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
