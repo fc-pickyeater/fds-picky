@@ -24,9 +24,10 @@
 ## 명세서 목록
 
 - [Header](./spec_header.md)
-- [Login](./spec_login.md)
-- [Join](./spec_join.md)
-- [FindPW](./spec_find_pw.md)
+- personal func. entries
+  - [Login](./spec_login.md)
+  - [Join](./spec_join.md)
+  - [FindPW](./spec_find_pw.md)
 - [MyPage](./spec_mypage.md)
 - [RecipeBook](./spec_recipe_book.md)
 - [Recipe](./spec_recipe.md)
