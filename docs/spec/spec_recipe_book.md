@@ -20,7 +20,17 @@ keyword 검색과 모든 ~ListLink 접미사를 갖는 link를 통해 접근 가
   - BookPrevPage    : 이전 page로 가는 link
   - BookNextPage    : 다음 page로 가는 link
   - BookNthPage     : n번째 page로 가는 link. 하나 이상이 존재하게 됩니다.
-- BookOptions : 검색 결과에 대한 filtering/ordering options panel
+- BookOptions       : 검색 결과에 대한 filtering/ordering options panel
+  - OrderingGroup   : 선택, 해제하여 오름차순, 내림차순을 설정할 수 있는 조건들의 group. 하나 이상의 조건을 선택할 경우 각 조건들간의 논리값 결합은 AND 연산 된다.
+    - Recent        : 최신순. 오름차순/나림차순. 기본값.
+    - Dictionary    : 사전순. 오름차순/나림차순.
+    - Score         : 평점순. 오름차순/나림차순.
+    - Reply         : 댓글 개수 순. 오름차순/나림차순.
+    - BookMark      : 북마크 개수 순. 오름차순/나림차순.
+  - FilteringGroup  : 특정 주제를 포함, 제외하게 만드는 조건들의 group.
+    - Scored        : 내가 평점을 준 Recipe를 포함/제외.
+    - BookMarked    : 내가 book mark한 Recipe를 포함/제외.
+    - Replied       : 내가 댓글을 남긴 Recipe를 포함/제외.
 
 ## RecipeBook component의 login 상태 추가 요소들
 
