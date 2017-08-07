@@ -21,18 +21,14 @@
 
 이러한 접근법은 '학습'이 본 프로젝트의 주제라고 상정했기 때문에 내린 결론이며 이를 위해 개발자의 창의성을 해치지 않고 진정한 의미에서의 '학습'이 진행될 수 있으리라 기대합니다. 명세서들이 명세하지 않는 styling 문제와 component 나누기에 대해선 개인적 연구와 팀원간 합의가 필요할 것입니다.
 
-## 조건 지시자
-
-요소 이름 뒤에 아래와 같은 약칭이 붙을 수 있습니다. 각각의 약칭은 요소의 등장 조건을 가리킵니다.
-- L : Logined. 로그인 상태일 때는 표시되고 로그아웃 상태일 때는 표시되지 않음을 가리킵니다.
-- M : Mine. L에 종속적이며 해당 요소가 현재 로그인 한 사용자의 고유 생성물일 경우 나타남을 가리킵니다.
-
 이러한 조건 지시
 
 ## 명세서 목록
 
-[Header](./spec_header.md)
-[Login](./spec_login.md)
-[Join](./spec_join.md)
-[FindPW](./spec_find_pw.md)
-[RecipeBook](./spec_recipe_book.md)
+- [Header](./spec_header.md)
+- [Login](./spec_login.md)
+- [Join](./spec_join.md)
+- [FindPW](./spec_find_pw.md)
+- [MyPage](./spec_mypage.md)
+- [RecipeBook](./spec_recipe_book.md)
+- [Recipe](./spec_recipe.md)
