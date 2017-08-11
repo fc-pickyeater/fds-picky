@@ -1,3 +1,4 @@
+@import 'mixin';
 // .hidden
 .hidden {
   display: none;
@@ -28,6 +29,24 @@ $base-font-size: 10px !default;
 $leading-scale: 1.5;
 // 글줄 사이(행간) 간격
 $leading: 1.4rem * $leading-scale;
+// 기본 색상
+$base-txt-color: #454545;
+$base-color: #00cbe7;
+$base-ponint-color: #f66a53;
+
+%border-radius{
+  border-radius: 4px;
+}
+
+input[type="email"]{
+  @include input;
+}
+input[type="password"]{
+  @include input;
+}
+input[type="text"]{
+  @include input;
+}
 
 .mt-1{
   margin-top: $leading;
@@ -64,7 +83,6 @@ header, main, footer{
   @include breakpoint(mobile){
 		font-size: 1.6rem;;
 	}
-
 }
 .main-bg{
   height: 100vh;

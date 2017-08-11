@@ -13,9 +13,9 @@
 }
 .hamburger-menu{
 	display: block;
-	width: 59px;
-	height: 59px;
-	padding: 18px 15px;
+	width: 52px;
+	height: 52px;
+	padding: 14px 11px;
 	border: 1px solid #fff;
 	box-sizing: border-box;
 	.line{
@@ -34,7 +34,7 @@
 }
 .utill-login {
 	text-align: right;
-	margin-top: $leading
+	margin-top: 17px
 }
 .utill-login li{
 	display: inline-block;
@@ -61,7 +61,7 @@
 	margin-top:  $leading * 2;
 	input{
 		width: 100%;
-		border: 10px solid #00cbe7;
+		border: 6px solid $base-color;
 		background: none;
 		line-height: 40px;
 		color: #fff;
@@ -73,7 +73,7 @@
 }
 .btn-search{
 	position: absolute;
-	top: 18px;
+	top: 15px;
 	right: 25px;
 	width: 27px;
 	height: 25px;

@@ -15,10 +15,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      components: {
-        default: Home,
-        header: Header,
-      },
+      component: Home,
     },
     {
       path: '/recipebook',

@@ -1,39 +1,6 @@
 <template lang="pug">
   #app
-    .main-bg
-      header(role="banner")
-        .container
-          .grid
-            .col.col-d-4.col-d-push-4.col-t-4.col-t-push-2.col-m-2.col-m-push-1.mt-1
-              h1.logo
-                a(href="/" title="pickycookbok" aria-label="pickcookbook")
-                  img(src="./assets/header/logo.png")
-            .col.col-d-1.col-d-pull-4.col-t-1.col-t-1.col-t-pull-4.col-m-1.col-m-pull-2.mt-1
-              nav.gnb(role="navigation")
-                a.hamburger-menu(href="" role="gorup")
-                  span.line(aria-label="메인메뉴")
-            .col.col-d-2.col-d-push-4.col-t-2.col-t-push-1.col-m-1.mt-1
-              h2.a11y-hidden 로그인, 회원가입
-              ul.utill-login
-                li
-                  a(href="") 로그인 
-                li
-                  a(href="") 회원가입 
-      main(role="main")
-        .container
-          .grid
-              .col.col-d-8.col-d-push-2
-                form.search(action="javascript:alert('검색이 완료되었습니다.')" id="search-form" role="search")
-                    fieldset
-                        legend 검색 폼
-                        input(type="search" id="search-kyewrod" aria-label="검색어 입력상자" required="" placeholder="검색어를 입력하세요") 
-                        button.btn-search(type="submit") 검색
-                h2.a11y-hidden 인기검색어, 레시피 순위
-                ul.search-word(role="hot-keyword")
-                  li
-                    a(href="") 인기 검색어순위
-                  li
-                    a(href="") 레시피 검색어순위header.header(role="banner")
+    header.header(role="banner")
       .container
         .grid
           .col.col-d-2.col-d-push-1.col-t-2.col-t-push-3.col-m-2.col-m-push-1
@@ -56,7 +23,7 @@
             h2.a11y-hidden 검색 폼
             form.head-search(action="javascript:alert('검색이 완료되었습니다.')" id="search_form" role="search")
               fieldset
-                  legend 검색 폼
+                  legend 검색 입력 폼
                   input(type="search" id="search_kyewrod" aria-label="검색어 입력상자" required="" placeholder="검색어를 입력하세요") 
                   button.btn-search(type="submit") 검색
     main.mt-2(role="main")
@@ -75,99 +42,151 @@
           .col.col-d-12(role="group")
             h2.a11y-hidden 검색결과 리스트
             .col.col-d-12.col-t-8.col-m-4.alpha.omega
-              .col.col-d-3.col-t-2.col-m-4
-                figure
-                  img(src="./assets/recipe/list_img.png" alt="감자구이"  width="100%")
-                  figcaption
-                    em 감자구이
-                    span 초간단 감자구이
-                .etc.mt-1
+              .col.col-d-3.col-t-4.col-m-4.cookbook-items
+                .cookbook-item
+                  figure.cookbook-img
+                    a(href="")
+                      img(src="./assets/recipe/list_img.png" alt="감자구이")
+                    figcaption.cookbook-txt
+                      a(href="")
+                        em 감자구이
+                        span 초간단 감자구이
+                    .etc
+                      a.like(href="" title="좋아요")
+                        button.btn-like(type="submit") 좋아요
+                        span.like-number 123
+                      a.comment(href="" title="댓글")
+                        button.btn-comment(type="submit") 댓글
+                        span.comment-number 123
+                      a.score(href="" title="평점")
+                        button.btn-score(type="submit") 평점
+                        span.score-number 5.3
+                    .book-mark
+                      button(type="button")
+                      
+                      
+              .col.col-d-3.col-t-4.col-m-4.cookbook-items
+                .cookbook-item
+                  figure.cookbook-img
+                    a(href="")
+                      img(src="./assets/recipe/list_img.png" alt="감자구이")
+                    figcaption.cookbook-txt
+                      a(href="")
+                        em 감자구이
+                        span 초간단 감자구이
+                    .etc
+                      a.like(href="" title="좋아요")
+                        button.btn-like(type="submit") 좋아요
+                        span.like-number 123
+                      a.comment(href="" title="댓글")
+                        button.btn-comment(type="submit") 댓글
+                        span.comment-number 123
+                      a.score(href="" title="평점")
+                        button.btn-score(type="submit") 평점
+                        span.score-number 5.3
+                    .book-mark
+                      button(type="button")
+              .col.col-d-3.col-t-4.col-m-4.cookbook-items
+                .cookbook-item
+                  figure.cookbook-img
+                    a(href="")
+                      img(src="./assets/recipe/list_img.png" alt="감자구이")
+                    figcaption.cookbook-txt
+                      a(href="")
+                        em 감자구이
+                        span 초간단 감자구이
+                    .etc
+                      a.like(href="" title="좋아요")
+                        button.btn-like(type="submit") 좋아요
+                        span.like-number 123
+                      a.comment(href="" title="댓글")
+                        button.btn-comment(type="submit") 댓글
+                        span.comment-number 123
+                      a.score(href="" title="평점")
+                        button.btn-score(type="submit") 평점
+                        span.score-number 5.3
+                    .book-mark
+                      button(type="button")
+              .col.col-d-3.col-t-4.col-m-4.cookbook-items
+                .cookbook-item
+                  figure.cookbook-img
+                    a(href="")
+                      img(src="./assets/recipe/list_img.png" alt="감자구이")
+                    figcaption.cookbook-txt
+                      a(href="")
+                        em 감자구이
+                        span 초간단 감자구이
+                    .etc
+                      a.like(href="" title="좋아요")
+                        button.btn-like(type="submit") 좋아요
+                        span.like-number 123
+                      a.comment(href="" title="댓글")
+                        button.btn-comment(type="submit") 댓글
+                        span.comment-number 123
+                      a.score(href="" title="평점")
+                        button.btn-score(type="submit") 평점
+                        span.score-number 5.3
+                    .book-mark
+                      button(type="button")
+              .col.col-d-3.col-t-4.col-m-4.cookbook-items
+                .cookbook-item
+                  figure.cookbook-img
+                    a(href="")
+                      img(src="./assets/recipe/list_img.png" alt="감자구이")
+                    figcaption.cookbook-txt
+                      a(href="")
+                        em 감자구이
+                        span 초간단 감자구이
+                    .etc
+                      a.like(href="" title="좋아요")
+                        button.btn-like(type="submit") 좋아요
+                        span.like-number 123
+                      a.comment(href="" title="댓글")
+                        button.btn-comment(type="submit") 댓글
+                        span.comment-number 123
+                      a.score(href="" title="평점")
+                        button.btn-score(type="submit") 평점
+                        span.score-number 5.3
+                    .book-mark
+                      button(type="button")
+        .grid
+          .col.col-d-12.mt-2
+            ul.pagination(role="pagination menu")
+              li.p-first
+                a(href="#") 
                   span
-                  input.like(type="checkbox")    
-              .col.col-d-3.col-t-2.col-m-4
-                figure
-                  img(src="./assets/recipe/list_img.png" alt="감자구이"  width="100%")
-                  figcaption
-                    em 감자구이
-                    span 초간단 감자구이
-                .etc.mt-1
+                    i.left-arrow
+                    i.left-arrow
+                  | 처음
+              li.p-prev
+                a(href="#") 
                   span
-                  input.like(type="checkbox")    
-              .col.col-d-3.col-t-2.col-m-4
-                figure
-                  img(src="./assets/recipe/list_img.png" alt="감자구이"  width="100%")
-                  figcaption
-                    em 감자구이
-                    span 초간단 감자구이
-                .etc.mt-1
+                    i.left-arrow
+                  | 이전
+              li.active
+                a(href="#") 1
+              li
+                a(href="#") 2
+              li
+                a(href="#") 3
+              li
+                a(href="#") 4
+              li
+                a(href="#") 5
+              li.p-next
+                a(href="#") 
+                  | 다음  
                   span
-                  input.like(type="checkbox")    
-              .col.col-d-3.col-t-2.col-m-4
-                figure
-                  img(src="./assets/recipe/list_img.png" alt="감자구이"  width="100%")
-                  figcaption
-                    em 감자구이
-                    span 초간단 감자구이
-                .etc.mt-1
+                    i.right-arrow
+                    i.right-arrow
+                                 
+              li.p-last
+                a(href="#")
+                  | 마지막     
                   span
-                  input.like(type="checkbox")    
-
-
-
-
-              //- ul.cookbook-list
-              //-   li.cookbook-items
-              //-     div.cookbook-item
-              //-       figure
-              //-           img(src="./assets/recipe/list_img.png" alt="감자구이")
-              //-           figcaption
-              //-             em 감자구이
-              //-             span 초간단 감자구이
-              //-       .etc.mt-1
-              //-         span
-              //-         input.like(type="checkbox")    
-              //-   li.cookbook-items
-              //-     div.cookbook-item
-              //-       figure
-              //-           img(src="./assets/recipe/list_img.png" alt="감자구이")
-              //-           figcaption
-              //-             em 감자구이
-              //-             span 초간단 감자구이
-              //-       .etc.mt-1
-              //-         span
-              //-         input.like(type="checkbox")    
-              //-   li.cookbook-items
-              //-     div.cookbook-item
-              //-       figure
-              //-           img(src="./assets/recipe/list_img.png" alt="감자구이")
-              //-           figcaption
-              //-             em 감자구이
-              //-             span 초간단 감자구이
-              //-       .etc.mt-1
-              //-         span
-              //-         input.like(type="checkbox")    
-              //-   li.cookbook-items
-              //-     div.cookbook-item
-              //-       figure
-              //-           img(src="./assets/recipe/list_img.png" alt="감자구이")
-              //-           figcaption
-              //-             em 감자구이
-              //-             span 초간단 감자구이
-              //-       .etc.mt-1
-              //-         span
-              //-         input.like(type="checkbox")    
-              //-   li.cookbook-items
-              //-     div.cookbook-item
-              //-       figure
-              //-           img(src="./assets/recipe/list_img.png" alt="감자구이")
-              //-           figcaption
-              //-             em 감자구이
-              //-             span 초간단 감자구이
-              //-       .etc.mt-1
-              //-         span
-              //-         input.like(type="checkbox")
-
-
+                    i.right-arrow
+                             
+              
 </template>
 
 <script>
@@ -178,4 +197,5 @@ export default {
 
 <style lang="sass">
   @import "./sass/stylesheet.scss"
+  
 </style>
