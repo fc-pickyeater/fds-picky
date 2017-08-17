@@ -1,42 +1,4 @@
 <template lang="pug">
-<<<<<<< HEAD
-  .home
-    h1 head
-    p 햄버거 메뉴
-    ul.hamburger
-      li
-        router-link(to="/") home
-      li 인기검색어: home으로 이동 후 인기검색어 리스트로 스크롤
-      li 인기레시피: home으로 이동 후 인기레시피 리스트로 스크롤
-      li(style="list-style:none") if logined then {
-      ul
-        li
-          router-link(to="/mypage") mypage
-        li
-          router-link(to="/recipe_edit") 내recipe작성
-        li 
-          router-link(to="/recipebook") 최근 열람한 recipe book
-        li
-          router-link(to="/recipebook") 내가 작성한 recipe book
-        li
-          router-link(to="/recipebook") 북마크 한 recipe book
-        li
-          router-link(to="/recipebook") 댓글 단 recipe book
-        li
-          router-link(to="/recipebook") 점수 준 recipe book
-      li(style="list-style:none") } |
-    search-input
-    p(v-show="isLogined")
-      button(type="button" @click="logOut") 로그아웃 링크
-      | |
-      router-link(to="/mypage").link(aria-label="asdf") 마이페이지 링크
-    p(v-show="!isLogined")
-      router-link(to="/login").link(aria-label="asdf") 로그인 링크
-      | |
-      router-link(to="/join").link(aria-label="asdf") 회원가입 링크
-
-    p {{getCurrentRouteName}}
-=======
   header.header(role="banner")
     .container
       .grid
@@ -91,50 +53,20 @@
                 legend 검색 폼
                 input(type="search" id="search_kyewrod" aria-label="검색어 입력상자" required="" placeholder="검색어를 입력하세요") 
                 button.btn-search(type="submit") 검색
->>>>>>> c8429e69d99019e8ff93229370915b3732fd2aa9
 </template>
 
 <script>
-import SearchInput from '@/components/header/SearchInput';
-import firebase from 'firebase';
-import { mapGetters, mapActions } from 'vuex';
-
 export default {
   name: 'head',
-  components: {
-    SearchInput,
-  },
   data() {
     return {
       hamburgerVisible: false,
     };
   },
-<<<<<<< HEAD
-  computed: {
-    getCurrentRouteName() {
-      return this.$route.name;
-    },
-    isLogined() {
-      this.checkSession();
-      return this.getCurrentUser;
-    },
-    ...mapGetters('userData', [
-      'getCurrentUser',
-    ]),
-  },
-  methods: {
-    logOut() {
-      this.logout();
-    },
-    ...mapActions('userData', [
-      'checkSession', 'logout',
-    ]),
-=======
   methods: {
     hamburgerToggle() {
       this.hamburgerVisible = !this.hamburgerVisible;
     },
->>>>>>> c8429e69d99019e8ff93229370915b3732fd2aa9
   },
 };
 </script>
@@ -151,7 +83,6 @@ export default {
   background: #fff
   box-shadow: 0 0 10px rgba(0,0,0,0.2)
   text-align: left
-
 .slide-enter  
   transform: translate(-320PX, 0)
   
@@ -160,7 +91,6 @@ export default {
 .slide-leave-active 
   transition: all 0.4s cubic-bezier(0.4, 0, 0, 1)
   transform: translate(-320PX, 0)
-
 .profile
   padding: 10px
   background: #f66b54
@@ -190,5 +120,4 @@ export default {
     display: block
     padding: 15px 0
     font-size: 1.8rem  
-
 </style>

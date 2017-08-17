@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     JoinSubmit() {
-      this.$http.post('http://pickycookbook.co.kr/member/create/', this.user_join)
+      this.$http.post(this.$store.state.user_create_api, this.user_join)
       .then((response) => {
         console.log(response);
         this.$router.push({ path: '/' });

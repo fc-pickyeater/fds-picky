@@ -12,8 +12,8 @@ export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
 
   state: {
-    user_create: 'http://pickycookbook.co.kr/member/create/',
-    user_login: 'http://pickycookbook.co.kr/member/login/',
+    user_create_api: 'http://pickycookbook.co.kr/api/member/create/',
+    user_login_api: 'http://pickycookbook.co.kr/api/member/login/',
 
   },
 

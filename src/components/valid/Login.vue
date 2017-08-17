@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     loginSubmit() {
-      this.$http.post('http://pickycookbook.co.kr/member/login/', this.user_login)
+      this.$http.post(this.$store.state.user_login_api, this.user_login)
       .then((response) => {
         const token = response.data.key;
         if (!window.localStorage.getItem('token')) {
