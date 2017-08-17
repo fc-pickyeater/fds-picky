@@ -12,7 +12,7 @@
         li
           router-link(to="/mypage") mypage
         li
-          router-link(to="/recipe") 내recipe작성
+          router-link(to="/recipe_edit") 내recipe작성
         li 
           router-link(to="/recipebook") 최근 열람한 recipe book
         li
@@ -24,21 +24,52 @@
         li
           router-link(to="/recipebook") 점수 준 recipe book
       li(style="list-style:none") } |
-    p if logined then { 로그아웃 링크 | 
-      router-link(to="/mypage") 마이페이지 링크
-      | } else { 
-      router-link(to="/login") 로그인 링크
-      |  | 
-      router-link(to="/join") 회원가입 링크
-      |  }
+    search-input
+    p(v-show="isLogined")
+      button(type="button" @click="logOut") 로그아웃 링크
+      | |
+      router-link(to="/mypage").link(aria-label="asdf") 마이페이지 링크
+    p(v-show="!isLogined")
+      router-link(to="/login").link(aria-label="asdf") 로그인 링크
+      | |
+      router-link(to="/join").link(aria-label="asdf") 회원가입 링크
+
+    p {{getCurrentRouteName}}
 </template>
 
 <script>
+import SearchInput from '@/components/header/SearchInput';
+import firebase from 'firebase';
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'head',
+  components: {
+    SearchInput,
+  },
   data() {
     return {
     };
+  },
+  computed: {
+    getCurrentRouteName() {
+      return this.$route.name;
+    },
+    isLogined() {
+      this.checkSession();
+      return this.getCurrentUser;
+    },
+    ...mapGetters('userData', [
+      'getCurrentUser',
+    ]),
+  },
+  methods: {
+    logOut() {
+      this.logout();
+    },
+    ...mapActions('userData', [
+      'checkSession', 'logout',
+    ]),
   },
 };
 </script>

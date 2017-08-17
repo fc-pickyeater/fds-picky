@@ -1,25 +1,56 @@
 import Vue from 'vue';
-
-// 컴포넌트 로드
+import resrc from 'vue-resource';
+import firebase from 'firebase';
+import { mapActions } from 'vuex';
+import FirebaseConfig from './components/auth/firebaseConfig';
 import App from './App';
-
-// vue-router 모듈 로드
 import router from './router/router';
-
-// vuex 모듈 로드
 import store from './store/store';
 
-// 환경설정: false로 설정할 경우, 배포에 대한 Tip을 출력하지 않습니다.
 Vue.config.productionTip = false;
 
-// 아래 라인 주석을 지우지 마세요.
-/* eslint-disable no-new */
+Vue.use(resrc);
+Vue.http.options.root = 'http://pickycookbook.co.kr';
 
+firebase.initializeApp(FirebaseConfig);
 
-// Vue 루트 인스턴스 생성 및 설정
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App },
+firebase.auth().onAuthStateChanged((user) => {
+  /* eslint-disable no-new */
+  new Vue({
+    created() {
+      this.injectUser(user);
+    },
+    el: '#app',
+    template: '<App/>',
+    components: { App },
+    router,
+    store,
+    render: h => h(App),
+    methods: {
+      ...mapActions('userData', [
+        'injectUser',
+      ]),
+    },
+  });
 });
+
+/* firebase.auth().onAuthStateChanged((user) => {
+  if (!app) {
+    app = new Vue({
+      el: '#app',
+      template: '<App/>',
+      components: { App },
+      router,
+      store,
+      created() {
+        this.setCurrentUser(user);
+      },
+      methods: {
+        ...mapMutations('userData', [
+          'setCurrentUser',
+        ]),
+      },
+    });
+  }
+});
+ */

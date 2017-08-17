@@ -1,9 +1,6 @@
 <template lang="pug">
   .home
     h1 main
-    p 
-      router-link(to="/recipebook") 검색 인풋
-      | |
     p 인기 검색어
     ul
       li 

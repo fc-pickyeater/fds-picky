@@ -1,11 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import firebase from 'firebase';
 import Home from '@/components/Home';
 import Header from '@/components/header/Header';
 import RecipeBook from '@/components/recipebook/RecipeBook';
 import Recipe from '@/components/recipe/Recipe';
 import MyPage from '@/components/personal/MyPage';
-import Login from '@/components/valid/Login';
+import Login from '@/components/auth/Login';
 
 Vue.use(Router);
 
@@ -16,13 +17,14 @@ export default new Router({
       path: '/',
       name: 'Home',
       components: {
-        default: Home,
+        default: null,
         header: Header,
       },
     },
     {
       path: '/recipebook',
       name: 'RecipeBook',
+      props: true,
       components: {
         default: RecipeBook,
         header: Header,
@@ -30,6 +32,14 @@ export default new Router({
     },
     {
       path: '/recipe',
+      name: 'Recipe',
+      components: {
+        default: Recipe,
+        header: Header,
+      },
+    },
+    {
+      path: '/recipe_edit',
       name: 'Recipe',
       components: {
         default: Recipe,
