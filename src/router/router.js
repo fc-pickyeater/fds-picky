@@ -6,7 +6,10 @@ import Header from '@/components/header/Header';
 import RecipeBook from '@/components/recipebook/RecipeBook';
 import Recipe from '@/components/recipe/Recipe';
 import MyPage from '@/components/personal/MyPage';
-import Login from '@/components/auth/Login';
+import Login from '@/components/valid/Login';
+import Join from '@/components/valid/Join';
+import Password from '@/components/valid/Password';
+
 
 Vue.use(Router);
 
@@ -16,10 +19,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      components: {
-        default: null,
-        header: Header,
-      },
+      component: Home,
     },
     {
       path: '/recipebook',
@@ -58,7 +58,15 @@ export default new Router({
       path: '/join',
       name: 'Join',
       components: {
-        default: Login,
+        default: Join,
+        header: Header,
+      },
+    },
+    {
+      path: '/password',
+      name: 'Password',
+      components: {
+        default: Password,
         header: Header,
       },
     },

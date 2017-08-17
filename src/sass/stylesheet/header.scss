@@ -1,6 +1,6 @@
 
 .header{
-	padding-bottom: $leading;
+	padding-bottom: 10px;
 	background: #1d192c;
 	@include breakpoint(mobile){
 		text-align: center;
@@ -15,14 +15,15 @@
 	margin-top: -4px;
 }
 
-.head-search 
+.head-search{ 
 	input{
-	width: 100%;
-	padding-left: 10px;
-	border: 10px solid #00cbe7;
-	background: none;
-	line-height: 40px;
-	color: #fff;
+		width: 100%;
+		padding-left: 10px;
+		border: 6px solid $base-color;
+		background: none;
+		line-height: 40px;
+		color: #fff;
+	}
 }
 
 
@@ -41,32 +42,139 @@
 		height: 35px;;
 	}
 }
-.cookbook-list{
-	@include clearfix;
-}
-.cookbook-items{
-	float: left;
-	width: 25%;
-	margin-top: $leading;
-	padding: 10px;
-	box-sizing: border-box;
-	@include breakpoint(mobile){
-		width: 50%;
-	}
 
+.cookbook-items{
+	margin-top: $leading;
 }
-.cookbook-item{
-	width: 100%;
+.cookbook-item{	
 	padding: 10px;
-	border: 1px solid #dedede;
 	background: #fff;
-	box-sizing: border-box;
+	box-sizing: border-box;	
+}
+
+
+.cookbook-img{
+	position: relative;
+
 	img{
 		width: 100%;
-		height: auto;
 	}
 }
-.etc{
-	border-top: 1px solid #d4d4d4;
+
+.cookbook-txt{
+	margin-top: $leading;
+	em{
+		display: block;
+		font-size: 16px;	
+	}
 }
 
+.etc{
+	opacity: 0;
+	transition: all .3s ease-out 0s;
+	position: absolute;
+	bottom: 71px;
+	width: 100%;
+	height: 40px;
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.5);
+	text-align: center;
+	box-sizing: border-box;
+	button{
+		width: 20px;
+		height: 19px;
+		border: 0;
+		margin-right: 5px;
+		background-image: url("./assets/icons.png");
+		background-color: transparent;
+		background-repeat: no-repeat;
+		text-indent: -9999em;	
+	}
+	span{
+		line-height: 19px;
+		color: #fff;
+	}
+	@include breakpoint(mobile){
+		opacity: 1;
+	}
+}
+
+.cookbook-img:hover .etc{
+	opacity: 1;
+}
+.like, .comment, .score{
+	display: inline-block;
+	width: 33.3333%;
+}
+.btn-like{
+	background-position: 0 -59px;
+	&:hover{
+			background-position: 0 -39px;
+	}
+}
+.btn-comment{
+	background-position: 0 -80px;
+}
+.btn-score{
+	background-position: 0 -135px;
+}
+
+.book-mark{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	z-index: 99;
+	button{
+		width: 20px;
+		height: 19px;
+		border: 0;
+		background: url("./assets/icons.png") no-repeat 0 -20px;
+	}
+}
+
+.pagination{
+	text-align: center;
+	@include breakpoint(mobile){
+		font-size: 1rem;
+	}
+	li{
+		display: inline-block;		
+	}
+	li.active a{
+		background: #1d192c;
+		color: #fff;
+	}
+	li:first-child a{
+		margin-left: 0;
+		border-top-left-radius: 4px;
+		border-bottom-left-radius : 4px;
+	}
+	a{
+		margin: 3px 2px;
+		padding: 6px 12px;
+		border: 1px solid #ddd;
+		color: #454545;
+		line-height: 1.42857143;
+	}
+}
+.p-first a, .p-prev a, .p-next a, .p-last a{
+	padding: 8px 0;
+	border: 0;
+	span{
+		margin-right: 5px;
+	}
+}
+.left-arrow{
+	font-family: FontAwesome;
+	&:before{
+		content: '\f104';
+		display: inline-block;
+	}
+}
+.right-arrow{
+	font-family: FontAwesome;
+	&:before{
+		content: '\f105';
+		display: inline-block;
+	}
+}

@@ -1,56 +1,25 @@
 import Vue from 'vue';
-import resrc from 'vue-resource';
-import firebase from 'firebase';
-import { mapActions } from 'vuex';
-import FirebaseConfig from './components/auth/firebaseConfig';
+
+// import VueResource from 'vue-resource';
+import axios from 'axios';
+
+// 컴포넌트 로드
 import App from './App';
 import router from './router/router';
 import store from './store/store';
 
 Vue.config.productionTip = false;
 
-Vue.use(resrc);
-Vue.http.options.root = 'http://pickycookbook.co.kr';
+// Vue.use(VueResource);
+Vue.prototype.$http = axios;
 
-firebase.initializeApp(FirebaseConfig);
-
-firebase.auth().onAuthStateChanged((user) => {
-  /* eslint-disable no-new */
-  new Vue({
-    created() {
-      this.injectUser(user);
-    },
-    el: '#app',
-    template: '<App/>',
-    components: { App },
-    router,
-    store,
-    render: h => h(App),
-    methods: {
-      ...mapActions('userData', [
-        'injectUser',
-      ]),
-    },
-  });
+// Vue 루트 인스턴스 생성 및 설정
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  store,
+  template: '<App/>',
+  components: { App },
+  render: h => h(App),
 });
-
-/* firebase.auth().onAuthStateChanged((user) => {
-  if (!app) {
-    app = new Vue({
-      el: '#app',
-      template: '<App/>',
-      components: { App },
-      router,
-      store,
-      created() {
-        this.setCurrentUser(user);
-      },
-      methods: {
-        ...mapMutations('userData', [
-          'setCurrentUser',
-        ]),
-      },
-    });
-  }
-});
- */
