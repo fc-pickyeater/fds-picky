@@ -12,7 +12,7 @@
                 .user-email
                   input(type="email" name="user-email" placeholder="이메일을 입력해주세요." required)
                   span 이메일주소를 정확하게 입력해주세요.
-                button.btn-login(type="submit" value="메일 전송") 전송하기
+                button.btn-login(type="button" value="메일 전송") 전송하기
 
               
 </template>
