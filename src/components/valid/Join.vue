@@ -19,7 +19,7 @@
                 .user-psssword-confirm
                   input(type="password" name="user-password2" placeholder="비밀번호 확인" v-model="user_join.password2" required)
                   span 비밀번호가 동일하지 않습니다.
-                button.btn-login(type="button" value="로그인 전송" @click="JoinSubmit") 가입하기               
+                button.btn-login(type="sumit" value="로그인 전송" @click="JoinSubmit") 가입하기               
 
               
 </template>
@@ -39,9 +39,10 @@ export default {
   },
   methods: {
     JoinSubmit() {
-      this.$http.post('http://pickycookbook.co.kr/member/create/', this.user_join)
+      this.$http.post(this.$store.state.user_create_api, this.user_join)
       .then((response) => {
         console.log(response);
+        window.alert('회원가입이 완료되었습니다'); // eslint-disable-line no-alert
         this.$router.push({ path: '/' });
       })
       .catch((error) => {
@@ -76,7 +77,7 @@ export default {
     display: block
     margin-top: 5px
     margin-left: 5px
-    // color: $base-ponint-color
+    color: #f66b54
     font-size: 1.2rem
 
 
