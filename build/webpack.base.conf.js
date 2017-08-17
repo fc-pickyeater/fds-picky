@@ -3,6 +3,7 @@ let utils = require('./utils')
 let config = require('../config')
 let vueLoaderConfig = require('./vue-loader.conf')
 
+
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -22,7 +23,9 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
+      // 'stylesheet': path.resolve(__dirname, '../src/sass/stylesheet.scss'),
+      
     }
   },
   module: {
@@ -39,7 +42,11 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig
+        options: vueLoaderConfig,
+        // loaders: {
+        //   'scss': 'vue-style-loader!css-loader!sass-loader',
+        //   'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+        // },
       },
       {
         test: /\.js$/,

@@ -1,6 +1,6 @@
 <template lang="pug">
   #app(v-cloak)
-    router-view(name="header")    
+    router-view(name="header")
     router-view    
 
 </template>
@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "./sass/stylesheet.scss"
+  @import "./sass/stylesheet"
   [v-cloak]
     display: none 
 </style>

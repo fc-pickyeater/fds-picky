@@ -58,9 +58,34 @@
 </template>
 
 <script>
+  // 정규식 검증
+  const emailRegex = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+  const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}$/;
 export default {
-  name: 'app',
-
+  name: 'Login',
+  data() {
+    return {
+      user_info: {
+        email: '',
+        password: '',
+      },
+    };
+  },
+  computed: {
+    validation: function() {
+      return {
+        email: emailRegex.test(this.user_info.email),
+        password: pwRegex.test(this.user_info.password),
+      };
+    },
+  },
+  methods: {
+    loginSubmit() {
+      this.$http.post('http://pickycookbook.co.kr/member/login/', this.user_info)
+      .then(response => console.log(response))
+      .catch(error => console.log.error(error.message));
+    },
+  },
 };
 </script>
 
