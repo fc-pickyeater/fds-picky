@@ -35,6 +35,8 @@ module.exports = {
   // http://eslint.org/docs/rules/
   // https://goo.gl/2P8squ
   'rules': {
+    
+    "no-param-reassign": [2, {"props": false}],
 
     // import 구문 사용 시, .js, .vue 확장자 필요 없음
     'import/extensions': ['error', 'always', {
