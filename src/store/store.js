@@ -11,6 +11,8 @@ export default new Vuex.Store({
   // strict mode
   strict: process.env.NODE_ENV !== 'production',
 
+  modules: {
+  },
   state: {
     user_create_api: 'http://pickycookbook.co.kr/api/member/create/',
     user_login_api: 'http://pickycookbook.co.kr/api/member/login/',
@@ -19,7 +21,7 @@ export default new Vuex.Store({
 
   getters: {
     getUrlLogin(state) {
-      return state.user_login;
+      return state.user_login_api;
     },
   },
 

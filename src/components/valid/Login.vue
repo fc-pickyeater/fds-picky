@@ -9,10 +9,10 @@
               legend.a11y-hidden 로그인 입력 폼
               .user-email
                 input(type="email" name="email" placeholder="이메일을 입력 해주세요." v-model.trim="user_login.email" required)
-                span 올바른 이메일 형식이 아닙니다.
+                span(v-show="") 올바른 이메일 형식이 아닙니다.
               .user-psssword
                 input(type="password" name="password" placeholder="비밀번호를 입력해주세요." minlength="6" maxlength ="20"  v-model.trim="user_login.password" required)
-                span 비밀번호는 6자 이상입니다.
+                span(v-show="")  비밀번호는 6자 이상입니다.
               button.btn-login(type="button" @click="loginSubmit" value="로그인 전송") 로그인
 
               p.mt-1
@@ -45,8 +45,8 @@ export default {
         }
         console.log('success token:', window.localStorage.getItem('token'));
         this.$router.push({ path: '/' });
-        console.log(response);
         console.log('로그인에 성공했습니다.');
+        console.log(response);
       })
       .catch((error) => {
         console.log(error.response);
@@ -107,7 +107,7 @@ export default {
     display: block
     margin-top: 5px
     margin-left: 5px
-    // color: $base-ponint-color
+    color: #f66b54
 
 
   .login-k

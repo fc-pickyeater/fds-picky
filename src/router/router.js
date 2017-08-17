@@ -4,7 +4,11 @@ import Home from '@/components/Home';
 import Header from '@/components/header/Header';
 import RecipeBook from '@/components/recipebook/RecipeBook';
 import Recipe from '@/components/recipe/Recipe';
+
+// Mypage
 import MyPage from '@/components/personal/MyPage';
+
+// Login
 import Login from '@/components/valid/Login';
 import Join from '@/components/valid/Join';
 import Password from '@/components/valid/Password';
