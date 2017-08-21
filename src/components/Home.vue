@@ -84,17 +84,13 @@ header
   position: relative
   z-index: 9
 
-.zindex
-  z-index: 9
-.gnb
-  position: fixed
-  top: 0
-  left: 0
-  width: 300px
-  height: 100%
-  background: #fff
-  box-shadow: 0 0 10px rgba(0,0,0,0.2)
-  text-align: left
+.btn-search
+ 	background: url('../assets/header/btn_search.png') no-repeat 0 0;
+
+.main-bg
+  height: 100vh
+  background: #fff url('../assets/main/main_bg.jpg') no-repeat center center fixed
+  background-size: cover
 
 .slide-enter  
   transform: translate(-320PX, 0)
@@ -133,10 +129,6 @@ header
   a
     display: block
     padding: 15px 0
-    font-size: 1.8rem
+    font-size: 1.8rem 
 
-.main-bg
-  height: 100vh
-  background: #fff url('../assets/main/main_bg.jpg') no-repeat center center fixed
-  background-size: cover
 </style>

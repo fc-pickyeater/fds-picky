@@ -2,8 +2,12 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/Home';
 import Header from '@/components/header/Header';
+
 import RecipeBook from '@/components/recipebook/RecipeBook';
+// import RecipeBookList from '@/components/recipebook/RecipeBookList';
+
 import Recipe from '@/components/recipe/Recipe';
+
 
 // Mypage
 import MyPage from '@/components/personal/MyPage';
@@ -33,6 +37,14 @@ export default new Router({
         header: Header,
       },
     },
+    // {
+    //   path: '/recipebook',
+    //   name: 'RecipeBookList',
+    //   components: {
+    //     default: RecipeBookList,
+    //     header: Header,
+    //   },
+    // },
     {
       path: '/recipe',
       name: 'Recipe',

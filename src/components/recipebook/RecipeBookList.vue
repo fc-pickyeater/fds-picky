@@ -1,31 +1,4 @@
 <template lang="pug">
-  #app
-    header.header(role="banner")
-      .container
-        .grid
-          .col.col-d-2.col-d-push-1.col-t-2.col-t-push-3.col-m-2.col-m-push-1
-            h1.small-logo
-              a(href="/" title="pickycookbok" aria-label="pickcookbook")
-                img(src="./assets/header/small_logo.png")
-          .col.col-d-1.col-d-pull-2.col-t-1.col-t-pull-2.col-m-1.col-m-pull-2.mt-1
-            nav.gnb(role="navigation")
-              a.hamburger-menu(href="" role="group")
-                span.line(aria-label="메인메뉴")
-          .col.col-d-2.col-d-push-7.col-t-2.col-t-push-3.col-m-1.mt-1
-            h2.a11y-hidden 로그인, 회원가입
-            ul.utill-login
-              li
-                a(href="") 로그인 
-              li
-                a(href="") 회원가입         
-                
-          .col.col-d-6.col-d-pull-1.mt-1
-            h2.a11y-hidden 검색 폼
-            form.head-search(action="javascript:alert('검색이 완료되었습니다.')" id="search_form" role="search")
-              fieldset
-                  legend 검색 입력 폼
-                  input(type="search" id="search_kyewrod" aria-label="검색어 입력상자" required="" placeholder="검색어를 입력하세요") 
-                  button.btn-search(type="submit") 검색
     main.mt-2(role="main")
       .container
         .grid.title-line
@@ -46,7 +19,7 @@
                 .cookbook-item
                   figure.cookbook-img
                     a(href="")
-                      img(src="./assets/recipe/list_img.png" alt="감자구이")
+                      img(src="../assets/recipe/list_img.png" alt="감자구이")
                     figcaption.cookbook-txt
                       a(href="")
                         em 감자구이
@@ -69,7 +42,7 @@
                 .cookbook-item
                   figure.cookbook-img
                     a(href="")
-                      img(src="./assets/recipe/list_img.png" alt="감자구이")
+                      img(src="../assets/recipe/list_img.png" alt="감자구이")
                     figcaption.cookbook-txt
                       a(href="")
                         em 감자구이
@@ -90,7 +63,7 @@
                 .cookbook-item
                   figure.cookbook-img
                     a(href="")
-                      img(src="./assets/recipe/list_img.png" alt="감자구이")
+                      img(src="../assets/recipe/list_img.png" alt="감자구이")
                     figcaption.cookbook-txt
                       a(href="")
                         em 감자구이
@@ -111,7 +84,7 @@
                 .cookbook-item
                   figure.cookbook-img
                     a(href="")
-                      img(src="./assets/recipe/list_img.png" alt="감자구이")
+                      img(src="../assets/recipe/list_img.png" alt="감자구이")
                     figcaption.cookbook-txt
                       a(href="")
                         em 감자구이
@@ -132,7 +105,7 @@
                 .cookbook-item
                   figure.cookbook-img
                     a(href="")
-                      img(src="./assets/recipe/list_img.png" alt="감자구이")
+                      img(src="../assets/recipe/list_img.png" alt="감자구이")
                     figcaption.cookbook-txt
                       a(href="")
                         em 감자구이
@@ -196,6 +169,142 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "./sass/stylesheet.scss"
-  
+@import "../../sass/stylesheet" 
+
+.sort-selector
+  width: 100%
+  height: 40px
+  padding-left: 5px
+  border: 1px solid #e4e4e4
+  @include breakpoint(mobile)
+    margin-top: $leading
+
+  @include breakpoint(tablet)
+    height: 35px  
+
+.cookbook-items
+	margin-top: $leading
+
+.cookbook-item
+	padding: 10px
+	background: #fff
+	box-sizing: border-box
+
+
+
+.cookbook-img
+	position: relative
+	img
+		width: 100%
+
+.cookbook-txt
+	margin-top: $leading
+	em
+		display: block
+		font-size: 16px
+
+.etc
+	opacity: 0
+	transition: all .3s ease-out 0s
+	position: absolute
+	bottom: 71px
+	width: 100%
+	height: 40px
+	padding: 10px
+	background: rgba(0, 0, 0, 0.5)
+	text-align: center
+	box-sizing: border-box
+	button
+		width: 20px
+		height: 19px
+		border: 0
+		margin-right: 5px;
+		background-image: url("../assets/icons.png")
+		background-color: transparent
+		background-repeat: no-repeat
+		text-indent: -9999em
+	
+	span
+		line-height: 19px
+		color: #fff
+	
+	@include breakpoint(mobile)
+		opacity: 1
+	
+
+
+.cookbook-img:hover .etc
+	opacity: 1
+
+.like, .comment, .score
+	display: inline-block
+	width: 33.3333%
+
+.btn-like
+	background-position: 0 -59px
+	&:hover
+			background-position: 0 -39px
+	
+
+.btn-comment
+	background-position: 0 -80px
+
+.btn-score
+	background-position: 0 -135px
+
+
+.book-mark
+	position: absolute
+	top: 5px
+	right: 5px
+	z-index: 99
+	button
+		width: 20px
+		height: 19px
+		border: 0
+		background: url("../assets/icons.png") no-repeat 0 -20px
+
+.pagination
+	text-align: center
+	@include breakpoint(mobile)
+		font-size: 1rem
+	
+	li
+		display: inline-block;
+	
+	li.active a
+		background: #1d192c
+		color: #fff
+	
+	li:first-child a
+		margin-left: 0
+		border-top-left-radius: 4px
+		border-bottom-left-radius: 4px
+	
+	a
+		margin: 3px 2px
+		padding: 6px 12px
+		border: 1px solid #ddd
+		color: #454545
+		line-height: 1.42857143	
+
+.p-first a, .p-prev a, .p-next a, .p-last a
+	padding: 8px 0
+	border: 0
+	span
+		margin-right: 5px	
+
+.left-arrow
+	font-family: FontAwesome
+	&:before
+		content: '\f104'
+		display: inline-block	
+
+.right-arrow
+	font-family: FontAwesome
+	&:before
+		content: '\f105'
+		display: inline-block
+	
+
 </style>
