@@ -18,7 +18,7 @@
                   span 비밀번호는 6자 이상입니다.
                 .user-psssword-confirm
                   input(type="password" name="user-password2" placeholder="비밀번호 확인" v-model="user_join.password2" required)
-                  span 비밀번호가 동일하지 않습니다.
+                  span(v-show="") 비밀번호가 동일하지 않습니다.
                 button.btn-login(type="sumit" value="로그인 전송" @click="JoinSubmit") 가입하기               
 
               
@@ -55,24 +55,24 @@ export default {
 </script>
 
 <style lang="sass">
-  // @import "../sass/stylesheet.scss"
+  @import "../../sass/stylesheet" 
 
   .login-wrap
     min-height: 300px
     border: 1px solid #ddd
     padding: 21px 68px
     background:  #fff
-    // @include breakpoint(mobile)
+    @include breakpoint(mobile)
       padding: 21px 50px
     
   .btn-login
     width: 100%
     height: 48px
-    // margin-top: $leading
+    margin-top: $leading
     border: none
-    // background: $base-color
+    background: $base-color
     color: #fff
-    // @extend %border-radius;
+    @extend %border-radius;
   .user-email span, .user-nickname span, .user-psssword span, .user-psssword-confirm span
     display: block
     margin-top: 5px

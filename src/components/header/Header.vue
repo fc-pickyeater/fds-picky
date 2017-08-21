@@ -72,17 +72,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.zindex
-  z-index: 9
-.gnb
-  position: fixed
-  top: 0
-  left: 0
-  width: 300px
-  height: 100%
-  background: #fff
-  box-shadow: 0 0 10px rgba(0,0,0,0.2)
-  text-align: left
+@import "../../sass/stylesheet" 
+
+.btn-search
+ 	background: url('../../assets/header/btn_search.png') no-repeat 0 0;
+
 .slide-enter  
   transform: translate(-320PX, 0)
   
