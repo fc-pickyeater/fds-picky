@@ -1,6 +1,5 @@
 import Vue from 'vue';
 
-// import VueResource from 'vue-resource';
 import axios from 'axios';
 
 // 컴포넌트 로드

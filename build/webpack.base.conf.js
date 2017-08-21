@@ -24,8 +24,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      // 'stylesheet': path.resolve(__dirname, '../src/sass/stylesheet.scss'),
-      
+      // 'stylesheet': resolve('src/sass'),
     }
   },
   module: {
@@ -76,7 +75,7 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      }
+      },
     ]
   }
 }

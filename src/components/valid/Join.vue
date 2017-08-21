@@ -55,7 +55,8 @@ export default {
 </script>
 
 <style lang="sass">
-  // @import "../sass/stylesheet.scss"
+  //@import "../sass/stylesheet.scss"
+  //@import "~@/sass/stylesheet"
 
   .login-wrap
     min-height: 300px

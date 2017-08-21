@@ -76,7 +76,10 @@ export default {
 };
 </script>
 
-<style  lang="sass" scoped>
+<style  lang="sass">
+
+
+
 header
   position: relative
   z-index: 9
@@ -130,5 +133,10 @@ header
   a
     display: block
     padding: 15px 0
-    font-size: 1.8rem  
+    font-size: 1.8rem
+
+.main-bg
+  height: 100vh
+  background: #fff url('../assets/main/main_bg.jpg') no-repeat center center fixed
+  background-size: cover
 </style>

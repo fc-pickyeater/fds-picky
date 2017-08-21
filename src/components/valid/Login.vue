@@ -57,58 +57,14 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
-  // @import "./stylesheet.scss"
-  // .login-wrap
-  //   min-height: 300px
-  //   border: 1px solid #ddd
-  //   padding: 21px 68px
-  //   background:  #fff
-  //   @include breakpoint(mobile)
-  //   padding: 21px 50px
-
-  // .btn-login
-  //   width: 100%
-  //   height: 48px
-  //   margin-top: $leading
-  //   border: none
-  //   background: $base-color
-  //   color: #fff
-  //   @extend %border-radius;
-  // .user-email span, .user-psssword span
-  //   display: block
-  //   margin-top: 5px
-  //   margin-left: 5px
-  //   color: $base-ponint-color
-  //   font-size: 1.2rem
-  // .sns-sharer
-  //   margin-top: $leading
-  //   a
-  //     display: block
-  //     position: relative
-  //     height: 48px
-  //     line-height: 48px
-  //     margin-bottom: 10px
-  //     padding: 0 16px 0 65px
-  //     @extend %border-radius;
-  //     box-sizing: border-box;
-  //   a:after
-  //     content: ''
-  //     display: inline-block
-  //     position: absolute
-  //     top: 0
-  //     left: 0
-  //     width: 48px
-  //     height: 48px
-  //     background-size: 40px auto
-  //     border-right: 1px solid rgba(0, 0, 0, 0.04)    
+<style lang="sass">
+  //@import "../../sass/stylesheet"
   
   .user-email span, .user-psssword span
     display: block
     margin-top: 5px
     margin-left: 5px
     color: #f66b54
-
 
   .login-k
     background: rgb(252,229,30)

@@ -45,5 +45,10 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "./sass/stylesheet.scss"
+@import "./sass/stylesheet.scss"
+.main-bg
+  height: 100vh
+  background: #fff url('./assets/main/main_bg.jpg') no-repeat center center fixed
+  background-size: cover
+
 </style>

@@ -40,10 +40,10 @@
           h2.a11y-hidden 로그인, 회원가입
           ul.utill-login
             li
-              router-link(to="./Login" role="button" aria-label="로그인 하기 버튼") 로그인
+              router-link(to="login" role="button" aria-label="로그인 하기 버튼") 로그인
               //- a(href="" role="button" aria-label="로그인 하기 버튼") 로그인 
             li
-              router-link(to="./Join" role="button" aria-label="회원가입 하기 버튼") 회원가입
+              router-link(to="join" role="button" aria-label="회원가입 하기 버튼") 회원가입
               //- a(href="" role="button" aria-label="회원가입 하기 버튼") 회원가입         
               
         .col.col-d-7.col-d-pull-2.mt-1
@@ -71,7 +71,8 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
+
 .zindex
   z-index: 9
 .gnb

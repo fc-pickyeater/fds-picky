@@ -90,7 +90,7 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "./sass/stylesheet.scss"
+  // @import "./sass/stylesheet.scss"
   [v-cloak]
     display: none  
   .gnb
