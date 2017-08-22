@@ -15,16 +15,15 @@
                 span(v-show="") 비밀번호는 6자 이상입니다.
               button.btn-login(type="button" @click="loginSubmit" value="로그인 전송") 로그인
 
-              p.mt-1
+              //- p.mt-1
                 router-link(to='./Password') 비밀번호를 잊으셨나요?
-          .sns-sharer(role="group")
-            //- a.login-k(href="" class="kakao-login" role="button" aria-label="카카오톡으로 로그인 하기 버튼") 카카오톡으로 로그인
+          //- .sns-sharer(role="group")
+            a.login-k(href="" class="kakao-login" role="button" aria-label="카카오톡으로 로그인 하기 버튼") 카카오톡으로 로그인
             a.login-f(href="#fb" class="facebook-login" role="button" @click="facebookLogin" aria-label="페이스북으로 로그인 하기 버튼") 페이스북으로 로그인
-            //- a.login-n(href="" class="naver-login" role="button" aria-label="네이버로 로그인 하기 버튼") 네이버로 로그인
+            a.login-n(href="" class="naver-login" role="button" aria-label="네이버로 로그인 하기 버튼") 네이버로 로그인
 </template>
 
 <script>
-/* eslint-disable */
 import Vue from 'vue';
 
 const FB = window.FB;
@@ -34,7 +33,6 @@ export default {
     return {
       user_login: {
         email: '',
-        name: '',
         password: '',
       },
     };
@@ -51,24 +49,21 @@ export default {
   },
   methods: {
     loginSubmit() {
-      this.$http.post(this.$store.state.user_login_api, this.user_login)
+      this.$http.login(this.user_login)
       .then((response) => {
-        const token = response.data.token;
-        if (!window.localStorage.getItem('token')) {
-          window.localStorage.setItem('token', token);
-        }
-        console.log('success token:', window.localStorage.getItem('token'));
-        this.$router.push({ path: '/' });
+        const resDataWithEmail = Object.assign(response.data, { email: this.user_login.email });
+        const PCBAuthValue = JSON.stringify(resDataWithEmail);
+        window.localStorage.setItem('PCBAuth', PCBAuthValue);
         console.log('로그인에 성공했습니다.');
-        console.log(response);
+        this.$router.back();
       })
       .catch((error) => {
-        console.log(error.response);
         console.log('로그인에 실패했습니다.');
+        console.log(error.response);
       });
     },
-    facebookLogin() {
-      FB.getLoginStatus((response) => {
+    /* facebookLogin() {
+       FB.getLoginStatus((response) => {
         console.log(response);
         if (response.status === 'connected') {
           const AccessToken = response.authResponse.accessToken;
@@ -85,14 +80,13 @@ export default {
           }, { scope: 'public_profile' });
         }
       });
-    },
+    }, */
   },
 };
 </script>
 
 <style lang="sass" scoped>
   @import "../../sass/stylesheet" 
-
 
   .login-wrap
     min-height: 300px

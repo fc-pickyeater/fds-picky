@@ -19,7 +19,15 @@
                 .user-psssword-confirm
                   input(type="password" name="user-password2" placeholder="비밀번호 확인" v-model="user_join.password2" required)
                   span(v-show="") 비밀번호가 동일하지 않습니다.
-                button.btn-login(type="sumit" value="로그인 전송" @click="JoinSubmit") 가입하기               
+                .user-comment
+                  textarea(name="user-comment" placeholder="하고싶은 말을 여기에 작성해 주세요~" v-model="user_join.content")
+                .user-img
+                  div(v-if="!user_join.img_profile")
+                    input(type="file" name="user-img" accept="image/*" @change="onFileChange")
+                  div(v-else)
+                    img(:src="profileImgSrc")
+                    button(@click="removeImage") Remove image
+                button.btn-login(type="button" value="로그인 전송" @click="joinSubmit") 가입하기
 
               
 </template>
@@ -34,20 +42,43 @@ export default {
         nickname: '',
         password1: '',
         password2: '',
+        content: '',
+        img_profile: null,
       },
+      profileImgSrc: '',
     };
   },
   methods: {
-    JoinSubmit() {
-      this.$http.post(this.$store.state.user_create_api, this.user_join)
+    onFileChange(e) {
+      const files = e.target.files || e.dataTransfer.files;
+      console.log(files[0]);
+      if (!files.length) {
+        return;
+      }
+      this.user_join.img_profile = files[0];
+      this.createImage();
+    },
+    createImage() {
+      const image = new Image();
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        this.profileImgSrc = e.target.result;
+      };
+      reader.readAsDataURL(this.user_join.img_profile);
+    },
+    removeImage(e) {
+      this.user_join.img_profile = null;
+    },
+    joinSubmit() {
+      this.$http.join(this.user_join)
       .then((response) => {
-        console.log(response);
-        window.alert('회원가입이 완료되었습니다'); // eslint-disable-line no-alert
-        this.$router.push({ path: '/' });
+        console.log('회원가입이 완료되었습니다');
+        this.$router.back();
       })
       .catch((error) => {
-        console.log(error.message);
-        console.log('로그인에 실패했습니다.');
+        console.log('회원가입에 실패했습니다.');
+        console.log(error);
       });
     },
   },
@@ -55,31 +86,35 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "../../sass/stylesheet" 
+@import "../../sass/stylesheet" 
 
-  .login-wrap
-    min-height: 300px
-    border: 1px solid #ddd
-    padding: 21px 68px
-    background:  #fff
-    @include breakpoint(mobile)
-      padding: 21px 50px
-    
-  .btn-login
-    width: 100%
-    height: 48px
-    margin-top: $leading
-    border: none
-    background: $base-color
-    color: #fff
-    @extend %border-radius;
-  .user-email span, .user-nickname span, .user-psssword span, .user-psssword-confirm span
-    display: block
-    margin-top: 5px
-    margin-left: 5px
-    color: #f66b54
-    font-size: 1.2rem
+.login-wrap
+  min-height: 300px
+  border: 1px solid #ddd
+  padding: 21px 68px
+  background:  #fff
+  @include breakpoint(mobile)
+    padding: 21px 50px
+  
+.btn-login
+  width: 100%
+  height: 48px
+  margin-top: $leading
+  border: none
+  background: $base-color
+  color: #fff
+  @extend %border-radius;
+.user-email span, .user-nickname span, .user-psssword span, .user-psssword-confirm span
+  display: block
+  margin-top: 5px
+  margin-left: 5px
+  color: #f66b54
+  font-size: 1.2rem
+  
+textarea
+  width: 100%
 
-
-
+.user-img img
+  width: 50%
+  height: 50%
 </style>

@@ -7,28 +7,24 @@ Vue.use(VueRouter);
 
 export default new Vuex.Store({
   // strict mode
-  strict: process.env.NODE_ENV !== 'production',
-
-  modules: {
-  },
   state: {
-    user_create_api: 'http://pickycookbook.co.kr/api/member/create/',
-    user_login_api: 'http://pickycookbook.co.kr/api/member/login/',
-    user_fb_api: 'http://pickycookbook.co.kr/api/member/facebook-login/',
-
+    isLogined: false,
+    loginedEmail: '',
+    loginedProfileImg: null,
   },
-
   getters: {
-    getUrlLogin(state) {
-      return state.user_login_api;
+    getIsLogined(state) {
+      return state.isLogined;
+    },
+    getLoginedEmail(state) {
+      return state.loginedEmail;
+    },
+    getLoginedProfileImg(state) {
+      return state.loginedProfileImg;
     },
   },
-
   mutations: {
-    goToHome() {
-      this.$router.push({ path: '/' });
-    },
-  },
 
+  },
 });
 
