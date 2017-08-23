@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "~stylesheet" 
+  @import "~stylesheet"
   [v-cloak]
     display: none 
 </style>

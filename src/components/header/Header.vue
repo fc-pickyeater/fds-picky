@@ -1,63 +1,32 @@
 <template lang="pug">
-  header.header(role="banner")
+div
+  header.main-bg(role="banner" v-show="this.$store.getters.getIsHome")
     .container
       .grid
-        .col.col-d-2.col-d-push-1.col-t-2.col-t-push-3.col-m-2.col-m-push-1
-          h1.small-logo
-            a(href="/" title="pickycookbok" aria-label="pickcookbook")
-              img(src="../../assets/header/small_logo.png" alt="small_logo")
-        .col.col-d-1.col-d-pull-2.col-t-1.col-t-pull-2.col-m-1.col-m-pull-2.mt-1.zindex
-          .hamburger-btn(role="menu-button")
-            button.hamburger-menu(href="#menu" @click="hamburgerToggle" role="menu")              
-              span.line(aria-label="menu")
-          transition(name="slide")
-            nav.gnb(v-show="hamburgerVisible" role="navigation")
-              .hamburger-close-btn(role="menu-button")
-                button.hamburger-close(type="button" @click="hamburgerToggle" role="close")
-                  span.line(aria-label="close")
-              .profile
-                .profile-img
-                  a(href="")
-                    img(src="../../assets/header/profile_male.png" alt="profile_img")
-                .profile-info
-                  a(href="")
-                    strong yacro@hanmail.net
-                    strong yacro
-                
-              ul.menu-link
-                li 
-                  a(href="") 인기 검색어
-                li 
-                  a(href="") 인기 레시피
-                li 
-                  a(href="") 마이페이지
-                li 
-                  a(href="") 나의 북마크
-                li 
-                  a(href="") 나의 레시피
-
-        .col.col-d-2.col-d-push-7.col-t-2.col-t-push-3.col-m-1.mt-1
-          h2.a11y-hidden 로그인, 회원가입
-          ul.utill-login
-            li
-              router-link(to="login" role="button" aria-label="로그인 하기 버튼") 로그인
-              //- a(href="" role="button" aria-label="로그인 하기 버튼") 로그인 
-            li
-              router-link(to="join" role="button" aria-label="회원가입 하기 버튼") 회원가입
-              //- a(href="" role="button" aria-label="회원가입 하기 버튼") 회원가입         
-              
-        .col.col-d-7.col-d-pull-2.mt-1
-          h2.a11y-hidden 검색 폼
-          form.head-search(action="javascript:alert('검색이 완료되었습니다.')" id="search_form" role="search")
-            fieldset
-                legend 검색 폼
-                input(type="search" id="search_kyewrod" aria-label="검색어 입력상자" required="" placeholder="검색어를 입력하세요") 
-                button.btn-search(type="submit") 검색
+        logo.logo.col.col-d-4.col-d-push-4.col-t-4.col-t-push-2.col-m-2.col-m-push-1.mt-1
+        navigation.col.col-d-1.col-d-pull-4.col-t-1.col-t-1.col-t-pull-4.col-m-1.col-m-pull-2.mt-1.zindex
+        auth-buttons.col.col-d-2.col-d-push-4.col-t-2.col-t-push-1.col-m-1.mt-1
+        search-form.col.col-d-8.col-d-pull-2d.search-form
+  header.header(role="banner" v-show="!this.$store.getters.getIsHome")
+    .container
+      .grid
+        logo.col.col-d-2.col-d-push-1.col-t-2.col-t-push-3.col-m-2.col-m-push-1
+        navigation.col.col-d-1.col-d-pull-2.col-t-1.col-t-pull-2.col-m-1.col-m-pull-2.mt-1.zindex
+        auth-buttons.col.col-d-2.col-d-push-7.col-t-2.col-t-push-3.col-m-1.mt-1
+        search-form.col.col-d-7.col-d-pull-2.mt-1
 </template>
 
 <script>
+import Logo from '@/components/header/Logo';
+import Navigation from '@/components/header/Navigation';
+import AuthButtons from '@/components/header/AuthButtons';
+import SearchForm from '@/components/header/SearchForm';
+
 export default {
-  name: 'head',
+  name: 'header',
+  components: {
+    Logo, Navigation, AuthButtons, SearchForm,
+  },
   data() {
     return {
       hamburgerVisible: false,
@@ -67,6 +36,18 @@ export default {
     hamburgerToggle() {
       this.hamburgerVisible = !this.hamburgerVisible;
     },
+    logout() {
+      this.$http.logout(JSON.parse(window.localStorage.getItem('PCBAuth')))
+      .then((response) => {
+        console.log(response);
+        console.log('로그아웃 되었습니다.');
+        window.localStorage.clear();
+        this.$store.dispatch('setIsLogined');
+      }).catch((error) => {
+        console.log(error.response);
+        console.log('로그아웃에 실패하였습니다.');
+      });
+    },
   },
 };
 </script>
@@ -74,44 +55,25 @@ export default {
 <style lang="sass" scoped>
 @import "../../sass/stylesheet" 
 
-.btn-search
- 	background: url('../../assets/header/btn_search.png') no-repeat 0 0;
+header
+  position: relative
+  z-index: 9
+.search-form
+  @include breakpoint(desktop)
+    top: 300px
+    left: -225px
+.header
+  padding-bottom: 10px
+  background: #1d192c
+  @include breakpoint(mobile)
+    text-align: center
+  @include breakpoint(tablet)
+    text-align: center
+.zindex
+  z-index: 9
+.main-bg
+  height: 100vh
+  background: #fff url('../../assets/main/main_bg.jpg') no-repeat center center fixed
+  background-size: cover
 
-.slide-enter  
-  transform: translate(-320PX, 0)
-  
-.slide-enter-active
-  transition: all 0.4s cubic-bezier(0.4, 0, 0, 1)
-.slide-leave-active 
-  transition: all 0.4s cubic-bezier(0.4, 0, 0, 1)
-  transform: translate(-320PX, 0)
-.profile
-  padding: 10px
-  background: #f66b54
-  .profile-img
-    float: left
-    a
-    img
-      width: 45px
-      height: 45px
-      border-radius: 100%
-  .profile-info
-    float: left
-    margin-left: 20px
-    a
-      color: #fff
-    strong
-      display: block
-  &:after
-    content: ''
-    display: block
-    clear: both
-.menu-link
-  padding: 30px 10px
-  li 
-    border-bottom: 1px solid #ddd
-  a
-    display: block
-    padding: 15px 0
-    font-size: 1.8rem  
 </style>

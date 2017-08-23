@@ -73,7 +73,22 @@ export default {
     joinSubmit() {
       this.$http.join(this.user_join)
       .then((response) => {
-        console.log('회원가입이 완료되었습니다');
+        window.localStorage.setItem('PCBAuth', JSON.stringify(response.data));
+        console.log('회원가입이 완료되었습니다.');
+        console.log('자동 로그인 되었습니다.');
+
+        this.$http.userDetail(response.data)
+        .then((res) => {
+          window.localStorage.setItem('PCBDetail', JSON.stringify(res.data));
+          this.$store.dispatch('setIsLogined');
+          this.$store.dispatch('setUserDetail');
+          console.log('유저 정보 불러오기에 성공했습니다.');
+        })
+        .catch((error) => {
+          console.log('유저 정보 불러오기에 실패했습니다.');
+          console.log(error.response);
+        });
+
         this.$router.back();
       })
       .catch((error) => {

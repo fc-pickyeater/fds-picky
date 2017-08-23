@@ -20,8 +20,25 @@ export default (() => {
   };
 
   axiosInstance.join = function join(requestData) {
-    console.log('axiosInstance.join 진입');
     return this.post('member/create/', makeFormData(requestData));
+  };
+
+  axiosInstance.userDetail = function userDetail(requestData) {
+    console.log('userDetail\'s requestData', requestData);
+    return this.get(`member/detail/${requestData.pk}/`, {
+      headers: {
+        Authorization: `Token ${requestData.token}`,
+      },
+    });
+  };
+
+  axiosInstance.logout = function logout(requestData) {
+    console.log('logout\'s requestData', requestData);
+    return this.post('member/logout/', {}, {
+      headers: {
+        Authorization: `Token ${requestData.token}`,
+      },
+    });
   };
 
   return axiosInstance;

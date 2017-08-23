@@ -11,5 +11,25 @@ export default new Vuex.Store({
   modules: {
     userData,
   },
+  state: {
+    currentRoutePath: '/',
+  },
+  getters: {
+    getCurrentRoutePath(state) {
+      return state.currentRoutePath;
+    },
+    getIsHome(state) {
+      return state.currentRoutePath === '/';
+    },
+  },
+  mutations: {
+    setCurrentRoutePath(state, payLoad) {
+      state.currentRoutePath = payLoad;
+    },
+  },
+  actions: {
+    setCurrentRoutePath({ commit }, payLoad) {
+      commit('setCurrentRoutePath', payLoad);
+    },
+  },
 });
-
