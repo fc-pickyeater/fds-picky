@@ -19,7 +19,7 @@
                 .user-psssword-confirm
                   input(type="password" name="user-password2" placeholder="비밀번호 확인" v-model="user_join.password2" required)
                   span(v-show="") 비밀번호가 동일하지 않습니다.
-                button.btn-login(type="sumit" value="로그인 전송" @click="JoinSubmit") 가입하기               
+                button.btn-login(type="button" value="로그인 전송" @click.prevent="JoinSubmit") 가입하기               
 
               
 </template>
@@ -43,7 +43,7 @@ export default {
       .then((response) => {
         console.log(response);
         window.alert('회원가입이 완료되었습니다'); // eslint-disable-line no-alert
-        this.$router.push({ path: '/' });
+        this.$router.push({ path: '/Login' });
       })
       .catch((error) => {
         console.log(error.message);

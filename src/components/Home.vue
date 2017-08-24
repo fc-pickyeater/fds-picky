@@ -38,7 +38,12 @@
                     a(href="") 나의 레시피
           .col.col-d-2.col-d-push-4.col-t-2.col-t-push-1.col-m-1.mt-1
             h2.a11y-hidden 로그인, 회원가입
-            ul.utill-login
+            ul.utill-login(v-if="isLogin")
+              li
+                a(href role="button"  @click.prevent="logout" aria-label="로그아웃 하기 버튼") 로그아웃
+              li
+                router-link(to="./Mypage" role="button" aria-label="마에피이지") 마이페이지
+            ul.utill-login(v-else)
               li
                 router-link(to="./Login" role="button" aria-label="로그인 하기 버튼") 로그인
               li
@@ -68,9 +73,19 @@ export default {
       hamburgerVisible: false,
     };
   },
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLogIn;
+    },
+  },
   methods: {
     hamburgerToggle() {
       this.hamburgerVisible = !this.hamburgerVisible;
+    },
+    logout() {
+      this.$store.dispatch('logout');
+      alert('성공적으로 로그아웃 하셨습니다.'); // eslint-disable-line no-alert
+      this.$router.push('/');
     },
   },
 };

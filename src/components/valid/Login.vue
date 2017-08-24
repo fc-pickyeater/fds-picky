@@ -13,13 +13,13 @@
               .user-psssword
                 input(type="password" name="password" placeholder="비밀번호를 입력해주세요." minlength="6" maxlength ="20"  v-model.trim="user_login.password" required)
                 span(v-show="") 비밀번호는 6자 이상입니다.
-              button.btn-login(type="button" @click="loginSubmit" value="로그인 전송") 로그인
+              button.btn-login(type="button" @click.prevent="loginSubmit" value="로그인 전송") 로그인
 
               p.mt-1
                 router-link(to='./Password') 비밀번호를 잊으셨나요?
           .sns-sharer(role="group")
             //- a.login-k(href="" class="kakao-login" role="button" aria-label="카카오톡으로 로그인 하기 버튼") 카카오톡으로 로그인
-            a.login-f(href="#fb" class="facebook-login" role="button" @click="facebookLogin" aria-label="페이스북으로 로그인 하기 버튼") 페이스북으로 로그인
+            button.login-f(type="button" class="facebook-login" @click="facebookLogin" aria-label="페이스북으로 로그인 하기 버튼") 페이스북으로 로그인
             //- a.login-n(href="" class="naver-login" role="button" aria-label="네이버로 로그인 하기 버튼") 네이버로 로그인
 </template>
 
@@ -53,18 +53,24 @@ export default {
     loginSubmit() {
       this.$http.post(this.$store.state.user_login_api, this.user_login)
       .then((response) => {
-        const token = response.data.token;
-        if (!window.localStorage.getItem('token')) {
-          window.localStorage.setItem('token', token);
+        if (response.status===200 && response.data.token.length) {
+          this.$store.dispatch('login', {token:response.data.token, userpk:response.data.pk});
         }
-        console.log('success token:', window.localStorage.getItem('token'));
+        // console.log('success token:', window.localStorage.getItem('token'));
+        // console.log('success pk:', window.localStorage.getItem('pk'));
         this.$router.push({ path: '/' });
         console.log('로그인에 성공했습니다.');
         console.log(response);
       })
       .catch((error) => {
+        if (this.user_login.email === '' && this.user_login.password !== '') {
+          alert('이메일  ' + error.response.data.email[0]);
+        } else if (this.user_login.password === '' && this.user_login.email !== '') {
+          alert('비밀번호  ' + error.response.data.password[0]);
+        } else { 
+          alert(error.response.data.login_error);
+        }
         console.log(error.response);
-        console.log('로그인에 실패했습니다.');
       });
     },
     facebookLogin() {
@@ -118,9 +124,10 @@ export default {
     font-size: 1.2rem
   .sns-sharer
     margin-top: $leading
-    a
+    button
       display: block
       position: relative
+      width: 100%
       height: 48px
       line-height: 48px
       margin-bottom: 10px
@@ -128,9 +135,8 @@ export default {
       border: 0
       @extend %border-radius
       box-sizing: border-box
-    a:after
+    button:after
       content: ''
-      display: inline-block
       position: absolute
       top: 0
       left: 0
