@@ -1,21 +1,30 @@
 export default {
   state: {
-    myRecipeList: {},
+    myRecipeList: [],
+    MRIcursor: 0,
   },
   getters: {
     getMyRecipeList(state) {
       return state.myRecipeList;
     },
+    getMRIcursor(state) {
+      return state.MRIcursor;
+    },
   },
   mutations: {
-    updateMyRecipeList(state, payload) {
-      state.myRecipeList = Object.assign({}, payload);
+    initMyRecipeList(state, payload) {
+      state.myRecipeList = payload;
+    },
+    moveCursorToNext(state) {
+      state.MRIcursor += 1;
+    },
+    moveCursorToPrev(state) {
+      state.MRIcursor -= 1;
+    },
+    moveCursorToN(state, payload) {
+      state.MRIcursor = payload;
     },
   },
   actions: {
-    updateMyRecipeList({ commit }) {
-      window.localStorage.getItem('PCBAuth');
-      commit('updateMyRecipeList');
-    },
   },
 };
