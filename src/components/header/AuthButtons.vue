@@ -32,6 +32,7 @@ export default {
         this.$store.dispatch('setIsLogined');
         this.$store.commit('resetReadBuffer');
         console.log('로그아웃 되었습니다.');
+        this.$router.replace('/');
       }).catch((error) => {
         console.log('logout error response', error.response);
         console.log('로그아웃에 실패하였습니다.');
