@@ -1,33 +1,48 @@
 export default {
   state: {
     isLogined: false,
-    userDetail: {
+    isUserEditMode: false,
+    readBuffer: {
       email: '',
       nickname: '',
       content: '',
       img_profile: '',
     },
+    /* writeBuffer: {
+      email: '',
+      nickname: '',
+      password1: '',
+      password2: '',
+      content: '',
+      img_profile: null,
+    }, */
   },
   getters: {
     getIsLogined(state) {
       return state.isLogined;
     },
-    getUserDetail(state) {
-      return state.userDetail;
+    getReadBuffer(state) {
+      return state.readBuffer;
+    },
+    getIsUserEditMode(state) {
+      return state.isUserEditMode;
     },
   },
   mutations: {
     setIsLogined(state, payload) {
       state.isLogined = payload;
     },
-    setUserDetail(state, payload) {
-      if (payload.email) state.userDetail.email = payload.email;
-      if (payload.nickname) state.userDetail.nickname = payload.nickname;
-      if (payload.content) state.userDetail.content = payload.content;
-      if (payload.img_profile) state.userDetail.img_profile = payload.img_profile;
+    toggleIsUserEditMode(state) {
+      state.isUserEditMode = !state.isUserEditMode;
     },
-    resetUserDetail(state) {
-      state.userDetail = {
+    updateReadBuffer(state, payload) {
+      if (payload.email) state.readBuffer.email = payload.email;
+      if (payload.nickname) state.readBuffer.nickname = payload.nickname;
+      if (payload.content) state.readBuffer.content = payload.content;
+      if (payload.img_profile) state.readBuffer.img_profile = payload.img_profile;
+    },
+    resetReadBuffer(state) {
+      state.readBuffer = {
         email: '',
         nickname: '',
         content: '',
@@ -43,14 +58,21 @@ export default {
         commit('setIsLogined', false);
       }
     },
-    setUserDetail({ commit }) {
+    updateReadBuffer({ commit }) {
       const PCBDetail = JSON.parse(window.localStorage.getItem('PCBDetail'));
       if (PCBDetail) {
-        commit('setUserDetail', {
+        commit('updateReadBuffer', {
           email: PCBDetail.email,
           nickname: PCBDetail.nickname,
           content: PCBDetail.content,
           img_profile: PCBDetail.img_profile,
+        });
+      } else {
+        commit('updateReadBuffer', {
+          email: '',
+          nickname: '',
+          content: '',
+          img_profile: '',
         });
       }
     },

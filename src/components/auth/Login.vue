@@ -1,26 +1,26 @@
 <template lang="pug">
-  main.mt-2(role="main")
-    .container
-      .grid
-        .col.col-d-6.col-d-push-3.col-t-6.col-t-push-1.login-wrap
-          h2.h2-title 로그인
-          form
-            fieldset
-              legend.a11y-hidden 로그인 입력 폼
-              .user-email
-                input(type="email" name="email" placeholder="이메일을 입력 해주세요." v-model.trim="user_login.email" required)
-                span(v-show="") 올바른 이메일 형식이 아닙니다.
-              .user-psssword
-                input(type="password" name="password" placeholder="비밀번호를 입력해주세요." minlength="6" maxlength ="20"  v-model.trim="user_login.password" required)
-                span(v-show="") 비밀번호는 6자 이상입니다.
-              button.btn-login(type="button" @click="loginSubmit" value="로그인 전송") 로그인
+main.mt-2(role="main")
+  .container
+    .grid
+      .col.col-d-6.col-d-push-3.col-t-6.col-t-push-1.login-wrap
+        h2.h2-title 로그인
+        form
+          fieldset
+            legend.a11y-hidden 로그인 입력 폼
+            .user-email
+              input(type="email" name="email" placeholder="이메일을 입력 해주세요." v-model.trim="user_login.email" required)
+              span(v-show="") 올바른 이메일 형식이 아닙니다.
+            .user-psssword
+              input(type="password" name="password" placeholder="비밀번호를 입력해주세요." minlength="6" maxlength ="20"  v-model.trim="user_login.password" required)
+              span(v-show="") 비밀번호는 6자 이상입니다.
+            button.btn-login(type="button" @click="loginSubmit" value="로그인 전송") 로그인
 
-              //- p.mt-1
-                router-link(to='./Password') 비밀번호를 잊으셨나요?
-          //- .sns-sharer(role="group")
-            a.login-k(href="" class="kakao-login" role="button" aria-label="카카오톡으로 로그인 하기 버튼") 카카오톡으로 로그인
-            a.login-f(href="#fb" class="facebook-login" role="button" @click="facebookLogin" aria-label="페이스북으로 로그인 하기 버튼") 페이스북으로 로그인
-            a.login-n(href="" class="naver-login" role="button" aria-label="네이버로 로그인 하기 버튼") 네이버로 로그인
+            //- p.mt-1
+              router-link(to='./Password') 비밀번호를 잊으셨나요?
+        //- .sns-sharer(role="group")
+          a.login-k(href="" class="kakao-login" role="button" aria-label="카카오톡으로 로그인 하기 버튼") 카카오톡으로 로그인
+          a.login-f(href="#fb" class="facebook-login" role="button" @click="facebookLogin" aria-label="페이스북으로 로그인 하기 버튼") 페이스북으로 로그인
+          a.login-n(href="" class="naver-login" role="button" aria-label="네이버로 로그인 하기 버튼") 네이버로 로그인
 </template>
 
 <script>
@@ -58,7 +58,7 @@ export default {
         .then((res) => {
           window.localStorage.setItem('PCBDetail', JSON.stringify(res.data));
           this.$store.dispatch('setIsLogined');
-          this.$store.dispatch('setUserDetail');
+          this.$store.dispatch('updateReadBuffer');
           console.log('유저 정보 불러오기에 성공했습니다.');
         })
         .catch((error) => {

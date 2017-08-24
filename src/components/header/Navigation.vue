@@ -11,11 +11,11 @@
       .profile
         .profile-img
           router-link(:to="this.$store.getters.getIsLogined? 'mypage' : 'login'" @click="hamburgerToggle")
-            img(:src="this.$store.getters.getUserDetail.img_profile" alt="")
+            img(:src="this.$store.getters.getReadBuffer.img_profile" alt="")
         .profile-info
           router-link(:to="this.$store.getters.getIsLogined? 'mypage' : 'login'" @click="hamburgerToggle")
-            strong {{this.$store.getters.getUserDetail.email || '로그인이 필요합니다.'}}
-            strong {{this.$store.getters.getUserDetail.nickname || '로그인 해 주세요.'}}
+            strong {{this.$store.getters.getReadBuffer.email || '로그인이 필요합니다.'}}
+            strong {{this.$store.getters.getReadBuffer.nickname || '로그인 해 주세요.'}}
       ul.menu-link
         li 
           a(href="") 인기 검색어

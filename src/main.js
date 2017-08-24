@@ -16,7 +16,10 @@ Vue.prototype.$http = axiosInstance;
 
 router.beforeEach((to, from, next) => {
   store.dispatch('setIsLogined');
-  store.dispatch('setUserDetail');
+  store.dispatch('updateReadBuffer');
+  if (to.path === '/mypage') {
+    // store.dispatch('updateMyRecipeList');
+  }
   next();
 });
 router.afterEach((to, from) => {

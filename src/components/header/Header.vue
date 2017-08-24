@@ -29,25 +29,7 @@ export default {
   },
   data() {
     return {
-      hamburgerVisible: false,
     };
-  },
-  methods: {
-    hamburgerToggle() {
-      this.hamburgerVisible = !this.hamburgerVisible;
-    },
-    logout() {
-      this.$http.logout(JSON.parse(window.localStorage.getItem('PCBAuth')))
-      .then((response) => {
-        console.log(response);
-        console.log('로그아웃 되었습니다.');
-        window.localStorage.clear();
-        this.$store.dispatch('setIsLogined');
-      }).catch((error) => {
-        console.log(error.response);
-        console.log('로그아웃에 실패하였습니다.');
-      });
-    },
   },
 };
 </script>

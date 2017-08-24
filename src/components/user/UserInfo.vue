@@ -1,5 +1,6 @@
 <template lang="pug">
 .user-info
+  h2 사용자 정보
   img(:src="this.userDetail.img_profile")
   p email : {{this.userDetail.email}}
   p nickname : {{this.userDetail.nickname}}
@@ -10,13 +11,8 @@
 export default {
   name: 'user-info',
   computed: {
-    userDetail: {
-      get() {
-        return this.$store.getters.getUserDetail;
-      },
-      set(val) {
-        this.$store.commit('setUserDetail', val);
-      },
+    userDetail() {
+      return this.$store.getters.getReadBuffer;
     },
   },
 };

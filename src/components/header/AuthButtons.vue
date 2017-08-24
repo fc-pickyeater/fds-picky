@@ -27,13 +27,13 @@ export default {
     logout() {
       this.$http.logout(JSON.parse(window.localStorage.getItem('PCBAuth')))
       .then((response) => {
-        console.log(response);
-        console.log('로그아웃 되었습니다.');
+        console.log('logout response:', response);
         window.localStorage.clear();
         this.$store.dispatch('setIsLogined');
-        this.$store.commit('resetUserDetail');
+        this.$store.commit('resetReadBuffer');
+        console.log('로그아웃 되었습니다.');
       }).catch((error) => {
-        console.log(error.response);
+        console.log('logout error response', error.response);
         console.log('로그아웃에 실패하였습니다.');
       });
     },
