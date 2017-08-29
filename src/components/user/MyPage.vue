@@ -2,7 +2,7 @@
 .mypage
   user-info(v-if="!this.$store.getters.getIsUserEditMode")
   user-info-edit(v-else)
-  button(type="button" @click="editUserInfo" v-if="!this.$store.getters.getIsUserEditMode") 정보 수정
+  button.info-btn(type="button" @click="editUserInfo" v-if="!this.$store.getters.getIsUserEditMode") 정보 수정
 </template>
 
 <script>
@@ -39,5 +39,13 @@ export default {
 </script>
 
 <style lang="sass">
-
+  @import "../../sass/stylesheet"
+  .info-btn
+    width: 100%
+    height: 48px
+    margin-top: $leading
+    border: none
+    background: $base-color
+    color: #fff
+    @extend %border-radius;
 </style>

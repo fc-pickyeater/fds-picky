@@ -23,7 +23,7 @@ export default {
 @import "~stylesheet"
 
 .search
-  margin-top:  $leading * 2
+  // margin-top:  $leading * 2
   input
     width: 100%
     border: 6px solid $base-color

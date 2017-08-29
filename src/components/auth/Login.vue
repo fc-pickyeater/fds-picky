@@ -2,11 +2,11 @@
 main.mt-2(role="main")
   .container
     .grid
-      .col.col-d-6.col-d-push-3.col-t-6.col-t-push-1.login-wrap
+      .col.col-d-6.col-d-push-3.col-t-6.col-t-push-1.info-wrap
         h2.h2-title 로그인
         form
           fieldset
-            legend.a11y-hidden 로그인 입력 폼
+            legend 로그인 입력 폼
             .user-email
               input(type="email" name="email" placeholder="이메일을 입력 해주세요." v-model.trim="user_login.email" required)
               span(v-show="") 올바른 이메일 형식이 아닙니다.
@@ -59,6 +59,7 @@ export default {
           window.localStorage.setItem('PCBDetail', JSON.stringify(res.data));
           this.$store.dispatch('setIsLogined');
           this.$store.dispatch('updateReadBuffer');
+          this.$router.push({ path: '/' });
           console.log('유저 정보 불러오기에 성공했습니다.');
         })
         .catch((error) => {
@@ -99,13 +100,13 @@ export default {
 <style lang="sass" scoped>
   @import "../../sass/stylesheet" 
 
-  .login-wrap
+  .info-wrap
     min-height: 300px
     border: 1px solid #ddd
-    padding: 21px 68px
+    padding: 21px 48px
     background:  #fff
     @include breakpoint(mobile)
-    padding: 21px 50px
+    padding: 21px 15px
 
   .btn-login
     width: 100%

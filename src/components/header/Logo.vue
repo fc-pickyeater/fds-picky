@@ -23,5 +23,5 @@ export default {
   img
     max-width: 100%
 .small-logo
-  margin-top: 15px
+  margin-top: -4px
 </style>

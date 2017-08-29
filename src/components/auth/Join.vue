@@ -2,17 +2,17 @@
 main.mt-2(role="main")
   .container
     .grid
-      .col.col-d-6.col-d-push-3.col-t-6.col-t-push-1.login-wrap
+      .col.col-d-6.col-d-push-3.col-t-6.col-t-push-1.info-wrap
         h2.h2-title 회원가입
         form
           fieldset
-            legend.a11y-hidden 회원가입 입력 폼
+            legend 회원가입 입력 폼
             .user-email
               input(type="email" name="user-email" placeholder="이메일을 입력해주세요." v-model="user_join.email" required)
               span(v-show="") 올바른 이메일 형식이 아닙니다.
             .user-nickname
-              input(type="text" name="user-name" placeholder="닉네임을 입력해주세요." v-model="user_join.nickname"   required)
-              span 6글자 이상, 12글자 이하로 작성해주세요.
+              input(type="text" name="user-name" placeholder="별명을 입력해주세요." v-model="user_join.nickname"   required)
+              span 2글자 이상, 12글자 이하로 작성해주세요.
             .user-psssword
               input(type="password" name="user-password1" placeholder="비밀번호를 입력해주세요." minlength="6" maxlength ="20"  v-model="user_join.password1" required)
               span 비밀번호는 6자 이상입니다.
@@ -20,13 +20,13 @@ main.mt-2(role="main")
               input(type="password" name="user-password2" placeholder="비밀번호 확인" v-model="user_join.password2" required)
               span(v-show="") 비밀번호가 동일하지 않습니다.
             .user-comment
-              textarea(name="user-comment" placeholder="하고싶은 말을 여기에 작성해 주세요~" v-model="user_join.content")
+              input(type="text" name="user-comment" minlength="1" maxlength ="40"  placeholder="하고싶은 말을 여기에 작성해 주세요~" v-model="user_join.content")
             .user-img
               div(v-if="!user_join.img_profile")
                 input(type="file" name="user-img" accept="image/*" @change="onFileChange")
               div(v-else)
                 img(:src="profileImgSrc")
-                button(@click="removeImage") Remove image
+                button.remove-btn(type="button" @click="removeImage") 삭제하기
             button.btn-login(type="button" value="로그인 전송" @click="joinSubmit") 가입하기
 </template>
 
@@ -98,16 +98,16 @@ export default {
 };
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 @import "../../sass/stylesheet" 
 
-.login-wrap
+.info-wrap
   min-height: 300px
   border: 1px solid #ddd
-  padding: 21px 68px
+  padding: 21px 48px
   background:  #fff
   @include breakpoint(mobile)
-    padding: 21px 50px
+    padding: 21px 15px
   
 .btn-login
   width: 100%
@@ -123,11 +123,21 @@ export default {
   margin-left: 5px
   color: #f66b54
   font-size: 1.2rem
-  
-textarea
-  width: 100%
+.user-comment 
+  // margin-top: $leading
+  // textarea
+  //   width: 100%
 
-.user-img img
-  width: 50%
-  height: 50%
+.user-img
+  margin-top: $leading
+  border: 1px solid #ddd
+  @extend %border-radius;
+  button
+    padding: 8px 9px
+    @extend %border-radius;
+    border: 0
+    background: $base-point-color
+    color: #fff
+
+ 
 </style>
